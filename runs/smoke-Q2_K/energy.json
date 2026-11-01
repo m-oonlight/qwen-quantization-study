@@ -1,20 +1,167 @@
 {
   "per_prompt": {
-    "HV3-MODULAR_ROOTS-01": null,
-    "HV3-ARRAY_RANGES-01": null
+    "HV3-MODULAR_ROOTS-01": {
+      "seconds": 2.0100009180023335,
+      "raw": {
+        "gpu_kwh": 3.219952608638402e-05,
+        "cpu_kwh": 4.83590188888889e-05,
+        "combined_kwh": 8.055854497527293e-05
+      },
+      "above_idle_signed": {
+        "gpu_kwh": 2.7372092448020093e-05,
+        "cpu_kwh": 3.6765418887242626e-05,
+        "combined_kwh": 6.413751133526272e-05
+      },
+      "idle_baseline": {
+        "seconds": 3.044968752998102,
+        "gpu_watts": 8.646145851207985,
+        "cpu_watts": 20.764647235787056,
+        "method": "GPU trapezoidal driver watts; CPU package accumulated microjoules, wrap-corrected; whole device/package, includes other activity"
+      },
+      "scope": "GPU device plus CPU package; not whole-machine wall energy"
+    },
+    "HV3-ARRAY_RANGES-01": {
+      "seconds": 14.062706175998755,
+      "raw": {
+        "gpu_kwh": 0.00029674722334430023,
+        "cpu_kwh": 0.0003939085638888889,
+        "combined_kwh": 0.0006906557872331892
+      },
+      "above_idle_signed": {
+        "gpu_kwh": 0.0002629727209386423,
+        "cpu_kwh": 0.00031279547140968385,
+        "combined_kwh": 0.0005757681923483262
+      },
+      "idle_baseline": {
+        "seconds": 3.044968752998102,
+        "gpu_watts": 8.646145851207985,
+        "cpu_watts": 20.764647235787056,
+        "method": "GPU trapezoidal driver watts; CPU package accumulated microjoules, wrap-corrected; whole device/package, includes other activity"
+      },
+      "scope": "GPU device plus CPU package; not whole-machine wall energy"
+    }
   },
   "inference_totals": {
     "raw": {
-      "gpu_kwh": null,
-      "cpu_kwh": null,
-      "combined_kwh": null
+      "gpu_kwh": 0.0003289467494306843,
+      "cpu_kwh": 0.00044226758277777784,
+      "combined_kwh": 0.0007712143322084621
     },
     "above_idle_signed": {
-      "gpu_kwh": null,
-      "cpu_kwh": null,
-      "combined_kwh": null
+      "gpu_kwh": 0.00029034481338666244,
+      "cpu_kwh": 0.00034956089029692647,
+      "combined_kwh": 0.0006399057036835889
     }
   },
-  "execution_segments": [],
-  "scope": "CPU package plus GPU device only; above-idle is a signed baseline subtraction, not wall electricity."
+  "execution_segments": [
+    {
+      "time": "2026-11-01T01:38:32.484705+00:00",
+      "segment_id": "2b200fdabe7444f398c51267a2202fbf",
+      "totals_j": {
+        "gpu_j": 1305.6038616179922,
+        "cpu_j": 1805.898887
+      },
+      "by_phase": {
+        "idle": {
+          "gpu_j": 27.76932170705923,
+          "cpu_j": 70.40781199999999,
+          "seconds": 3.2089371389993175
+        },
+        "loading": {
+          "gpu_j": 42.98774800408945,
+          "cpu_j": 92.40070800000001,
+          "seconds": 2.0419253040017793
+        },
+        "inference": {
+          "gpu_j": 1219.8031289371497,
+          "cpu_j": 1623.335056,
+          "seconds": 16.5620017250003
+        },
+        "between_phases": {
+          "gpu_j": 2.0720909269759247,
+          "cpu_j": 1.762864,
+          "seconds": 0.033656962998065865
+        },
+        "coding_grading": {
+          "gpu_j": 12.971572042717797,
+          "cpu_j": 17.992447,
+          "seconds": 0.23361678600122104
+        }
+      },
+      "baseline": {
+        "seconds": 3.044968752998102,
+        "gpu_watts": 8.646145851207985,
+        "cpu_watts": 20.764647235787056,
+        "method": "GPU trapezoidal driver watts; CPU package accumulated microjoules, wrap-corrected; whole device/package, includes other activity"
+      },
+      "cpu_counters": [
+        {
+          "path": "/sys/class/powercap/intel-rapl:0/energy_uj",
+          "max_energy_range_uj": 65532610987
+        }
+      ],
+      "telemetry_errors": [],
+      "scope": "Observed execution segment; includes baseline, loading/qualification, inference, grading and backup work. CPU/GPU only, not wall energy."
+    }
+  ],
+  "scope": "CPU package plus GPU device only; above-idle is a signed baseline subtraction, not wall electricity.",
+  "whole_run_observed_raw": {
+    "gpu_kwh": 0.0003626677393383312,
+    "cpu_kwh": 0.0005016385797222223,
+    "combined_kwh": 0.0008643063190605535
+  },
+  "whole_run_above_idle_signed": {
+    "gpu_kwh": 0.0003096377135480045,
+    "cpu_kwh": 0.00037428128117665413,
+    "combined_kwh": 0.0006839189947246587
+  },
+  "observed_seconds": 22.080137917000684,
+  "above_idle_coverage_seconds": 22.080137917000684,
+  "by_phase": {
+    "idle": {
+      "gpu_kwh": 7.71370047418312e-06,
+      "cpu_kwh": 1.9557725555555553e-05,
+      "combined_kwh": 2.7271426029738675e-05,
+      "seconds": 3.2089371389993175
+    },
+    "loading": {
+      "gpu_kwh": 1.1941041112247068e-05,
+      "cpu_kwh": 2.5666863333333335e-05,
+      "combined_kwh": 3.76079044455804e-05,
+      "seconds": 2.0419253040017793
+    },
+    "inference": {
+      "gpu_kwh": 0.00033883420248254157,
+      "cpu_kwh": 0.0004509264044444444,
+      "combined_kwh": 0.000789760606926986,
+      "seconds": 16.5620017250003
+    },
+    "between_phases": {
+      "gpu_kwh": 5.75580813048868e-07,
+      "cpu_kwh": 4.896844444444445e-07,
+      "combined_kwh": 1.0652652574933125e-06,
+      "seconds": 0.033656962998065865
+    },
+    "coding_grading": {
+      "gpu_kwh": 3.6032144563104994e-06,
+      "cpu_kwh": 4.9979019444444444e-06,
+      "combined_kwh": 8.601116400754943e-06,
+      "seconds": 0.23361678600122104
+    }
+  },
+  "per_question_all_attempts_observed": {
+    "HV3-MODULAR_ROOTS-01": {
+      "gpu_kwh": 3.219952608638402e-05,
+      "cpu_kwh": 4.835901888888889e-05,
+      "combined_kwh": 8.055854497527291e-05,
+      "seconds": 2.001922409999679
+    },
+    "HV3-ARRAY_RANGES-01": {
+      "gpu_kwh": 0.00029674722334430023,
+      "cpu_kwh": 0.0003939085638888889,
+      "combined_kwh": 0.0006906557872331892,
+      "seconds": 14.06352827199953
+    }
+  },
+  "measurement": "Fsynced one-second telemetry integrated once, including interrupted attempts. CPU package plus GPU device only. No measurements during a powered-off gap."
 }
