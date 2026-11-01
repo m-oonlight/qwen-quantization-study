@@ -1,36 +1,25 @@
 {
   "format": "Concatenate parts in listed order to restore each exact original log; chunks may split JSON lines.",
   "logs": {
-    "diagnostics.jsonl": {
-      "bytes": 104,
-      "sha256": "ffc911c86bcb28a9ef24ad3dd142e98acadb32521c4399c0ea63c7506990b983",
-      "parts": [
-        {
-          "path": "logs/diagnostics.jsonl.part-000000",
-          "bytes": 104,
-          "sha256": "ffc911c86bcb28a9ef24ad3dd142e98acadb32521c4399c0ea63c7506990b983"
-        }
-      ]
-    },
     "runtime.log": {
-      "bytes": 26957,
-      "sha256": "9c612f063bd6278fe770602c9a14528d956d149510f07eec3652a1db070aef10",
+      "bytes": 20795,
+      "sha256": "ee4e4e422684f673697049ada44d53dcf5c4947035a48d33583b832819055044",
       "parts": [
         {
           "path": "logs/runtime.log.part-000000",
-          "bytes": 26957,
-          "sha256": "9c612f063bd6278fe770602c9a14528d956d149510f07eec3652a1db070aef10"
+          "bytes": 20795,
+          "sha256": "ee4e4e422684f673697049ada44d53dcf5c4947035a48d33583b832819055044"
         }
       ]
     },
     "stress.jsonl": {
-      "bytes": 83897,
-      "sha256": "06883755490953b9258ff22626c164b4b08b310d9710e4d2ae17f7d3cca62601",
+      "bytes": 19162,
+      "sha256": "02b4257c6754d183702196ac6191ab7a7362fd42e9a2c1caa9b0794c18495361",
       "parts": [
         {
           "path": "logs/stress.jsonl.part-000000",
-          "bytes": 83897,
-          "sha256": "06883755490953b9258ff22626c164b4b08b310d9710e4d2ae17f7d3cca62601"
+          "bytes": 19162,
+          "sha256": "02b4257c6754d183702196ac6191ab7a7362fd42e9a2c1caa9b0794c18495361"
         }
       ]
     }
