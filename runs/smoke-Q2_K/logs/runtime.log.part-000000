@@ -249,3 +249,62 @@ How are you?<|im_end|>
 0.01.563.439 I srv  llama_server: model loaded
 0.01.563.442 I srv  llama_server: listening on http://127.0.0.1:8081
 0.01.563.521 I srv  update_slots: all slots are idle
+0.02.126.407 I srv  server_strea: conv_id= (empty=1)
+0.02.127.041 I slot get_availabl: id  0 | task -1 |  - skipping, slot is empty
+0.02.127.044 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+0.02.127.109 I cmn  common_reaso: activated, budget=64 tokens
+0.02.127.128 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> ?min-p -> ?xtc -> ?temp-ext -> dist 
+0.02.127.137 I slot launch_slot_: id  0 | task -1 | sampler params: 
+	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 1.500
+	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+	top_k = 20, top_p = 0.950, min_p = 0.000, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 1.000
+	mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+0.02.127.138 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.02.127.151 I slot   operator(): id  0 | task 0 | new prompt, n_ctx_slot = 131072, n_keep = 0, task.n_tokens = 202
+0.02.127.162 I slot   operator(): id  0 | task 0 | cached n_tokens = 0, memory_seq_rm [0, end)
+0.02.768.697 I slot   operator(): id  0 | task 0 | cached n_tokens = 198, memory_seq_rm [198, end)
+0.02.768.804 I slot init_sampler: id  0 | task 0 | init sampler, took 0.04 ms, tokens: text = 202, total = 202
+0.02.808.395 I slot create_check: id  0 | task 0 | created context checkpoint 1 of 32 (pos_min = 197, pos_max = 197, n_tokens = 198, size = 62.813 MiB)
+0.03.798.420 I cmn  common_reaso: budget exhausted, forcing end sequence
+0.03.830.029 I cmn  common_reaso: forced sequence complete, done
+0.04.013.914 I slot print_timing: id  0 | task 0 | prompt eval time =     713.66 ms /   202 tokens (    3.53 ms per token,   283.05 tokens per second)
+0.04.013.917 I slot print_timing: id  0 | task 0 |        eval time =    1173.08 ms /    77 tokens (   15.44 ms per token,    64.79 tokens per second)
+0.04.013.918 I slot print_timing: id  0 | task 0 |       total time =    1886.75 ms /   279 tokens
+0.04.013.922 I slot print_timing: id  0 | task 0 |    graphs reused =         75
+0.04.013.962 I slot      release: id  0 | task 0 | stop processing: n_tokens = 278, truncated = 0
+0.04.013.969 I srv  update_slots: all slots are idle
+0.04.261.268 I srv  server_strea: conv_id= (empty=1)
+0.04.262.529 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.005 (3/586) > 0.100
+0.04.262.532 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 16540587748
+0.04.262.566 I cmn  common_reaso: activated, budget=64 tokens
+0.04.262.606 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> ?min-p -> ?xtc -> ?temp-ext -> dist 
+0.04.262.611 I slot launch_slot_: id  0 | task -1 | sampler params: 
+	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 1.500
+	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+	top_k = 20, top_p = 0.950, min_p = 0.000, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 1.000
+	mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+0.04.262.613 I slot launch_slot_: id  0 | task 79 | processing task, is_child = 0
+0.04.262.618 I slot   operator(): id  0 | task 79 | new prompt, n_ctx_slot = 131072, n_keep = 0, task.n_tokens = 586
+0.04.262.621 I slot   operator(): id  0 | task 79 | erased invalidated context checkpoint (pos_min = 197, pos_max = 197, n_tokens = 198, n_swa = 0, pos_next = 0, size = 62.813 MiB)
+0.04.266.357 I slot   operator(): id  0 | task 79 | cached n_tokens = 0, memory_seq_rm [0, end)
+0.04.639.483 I slot   operator(): id  0 | task 79 | cached n_tokens = 70, memory_seq_rm [70, end)
+0.04.667.020 I slot create_check: id  0 | task 79 | created context checkpoint 1 of 32 (pos_min = 69, pos_max = 69, n_tokens = 70, size = 62.813 MiB)
+0.05.339.795 I slot   operator(): id  0 | task 79 | cached n_tokens = 582, memory_seq_rm [582, end)
+0.05.339.935 I slot init_sampler: id  0 | task 79 | init sampler, took 0.08 ms, tokens: text = 586, total = 586
+0.05.399.690 I slot create_check: id  0 | task 79 | created context checkpoint 2 of 32 (pos_min = 581, pos_max = 581, n_tokens = 582, size = 62.813 MiB)
+0.06.363.348 I cmn  common_reaso: budget exhausted, forcing end sequence
+0.06.392.288 I cmn  common_reaso: forced sequence complete, done
+0.08.429.916 I slot print_timing: id  0 | task 79 | n_gen =    203, tg =  67.30 t/s, tg_3s =  67.63 t/s
+0.11.445.274 I slot print_timing: id  0 | task 79 | n_gen =    405, tg =  67.14 t/s, tg_3s =  66.99 t/s
+0.14.453.648 I slot print_timing: id  0 | task 79 | n_gen =    608, tg =  67.26 t/s, tg_3s =  67.48 t/s
+0.17.461.157 I slot print_timing: id  0 | task 79 | n_gen =    811, tg =  67.32 t/s, tg_3s =  67.50 t/s
+0.18.172.771 I slot print_timing: id  0 | task 79 | prompt eval time =    1165.79 ms /   586 tokens (    1.99 ms per token,   502.67 tokens per second)
+0.18.172.773 I slot print_timing: id  0 | task 79 |        eval time =   12744.36 ms /   859 tokens (   14.85 ms per token,    67.32 tokens per second)
+0.18.172.774 I slot print_timing: id  0 | task 79 |       total time =   13910.14 ms /  1445 tokens
+0.18.172.775 I slot print_timing: id  0 | task 79 |    graphs reused =        929
+0.18.172.822 I slot      release: id  0 | task 79 | stop processing: n_tokens = 1444, truncated = 0
+0.18.172.831 I srv  update_slots: all slots are idle
+0.18.306.494 I srv    operator(): operator(): cleaning up before exit...
+0.18.308.663 I common_memory_breakdown_print: | memory breakdown [MiB]  | total   free    self   model   context   compute    unaccounted |
+0.18.308.665 I common_memory_breakdown_print: |   - CUDA0 (RTX 4060 Ti) | 15949 = 8637 + (7111 =  4116 +    2622 +     372) +         201 |
+0.18.308.666 I common_memory_breakdown_print: |   - Host                |                 8651 =  8515 +       0 +     136                |
