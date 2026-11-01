@@ -1,0 +1,38 @@
+{
+  "format": "Concatenate parts in listed order to restore each exact original log; chunks may split JSON lines.",
+  "logs": {
+    "diagnostics.jsonl": {
+      "bytes": 3744,
+      "sha256": "0d034b41a56c573a61aa915b42975e8262ccdc3641cbf44fef6977060aff4125",
+      "parts": [
+        {
+          "path": "logs/diagnostics.jsonl.part-000000",
+          "bytes": 3744,
+          "sha256": "0d034b41a56c573a61aa915b42975e8262ccdc3641cbf44fef6977060aff4125"
+        }
+      ]
+    },
+    "runtime.log": {
+      "bytes": 446092,
+      "sha256": "5399485afcd0de96d23467fefc46aa8b2401d2978d6c5faa5e86ad3bc1a264d5",
+      "parts": [
+        {
+          "path": "logs/runtime.log.part-000000",
+          "bytes": 446092,
+          "sha256": "5399485afcd0de96d23467fefc46aa8b2401d2978d6c5faa5e86ad3bc1a264d5"
+        }
+      ]
+    },
+    "stress.jsonl": {
+      "bytes": 1745026,
+      "sha256": "dae58e7baeb8854942a611c7d49bc5966012979c7f31850c40960953a3700e4d",
+      "parts": [
+        {
+          "path": "logs/stress.jsonl.part-000000",
+          "bytes": 1745026,
+          "sha256": "dae58e7baeb8854942a611c7d49bc5966012979c7f31850c40960953a3700e4d"
+        }
+      ]
+    }
+  }
+}

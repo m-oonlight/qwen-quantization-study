@@ -1,0 +1,420 @@
+{
+  "purpose": "historical 25-question pilot; excluded from study",
+  "original_server_command": [
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/llama-server",
+    "--jinja",
+    "--reasoning",
+    "on",
+    "--reasoning-budget",
+    "16384",
+    "-m",
+    "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q8_0.gguf",
+    "--gpu-layers",
+    "all",
+    "--n-cpu-moe",
+    "30",
+    "--fit",
+    "off",
+    "--override-tensor",
+    "token_embd.weight=CUDA0",
+    "-c",
+    "131072",
+    "-n",
+    "24576",
+    "-b",
+    "2048",
+    "-ub",
+    "512",
+    "-ctk",
+    "f16",
+    "-ctv",
+    "f16",
+    "--parallel",
+    "1",
+    "--threads",
+    "16",
+    "--threads-batch",
+    "16",
+    "--flash-attn",
+    "auto",
+    "--cache-ram",
+    "0",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8081"
+  ],
+  "original_profile": {
+    "status": "candidate; pilot measured; full study NOT authorized or frozen",
+    "purpose": "Isolate quantization with shared placement and inference settings. Pilot excluded from full study.",
+    "model_family": "Qwen3.6-35B-A3B",
+    "model_revision": "5c2410d71524f4f72b023ce8daf7a80528226d5f",
+    "runtime_commit": "23b0202a189c44a54625aadcb37a946dd1d6278d",
+    "server_command_q8": [
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/llama-server",
+      "--jinja",
+      "--reasoning",
+      "on",
+      "--reasoning-budget",
+      "16384",
+      "-m",
+      "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q8_0.gguf",
+      "--gpu-layers",
+      "all",
+      "--n-cpu-moe",
+      "30",
+      "--fit",
+      "off",
+      "--override-tensor",
+      "token_embd.weight=CUDA0",
+      "-c",
+      "131072",
+      "-n",
+      "24576",
+      "-b",
+      "2048",
+      "-ub",
+      "512",
+      "-ctk",
+      "f16",
+      "-ctv",
+      "f16",
+      "--parallel",
+      "1",
+      "--threads",
+      "16",
+      "--threads-batch",
+      "16",
+      "--flash-attn",
+      "auto",
+      "--cache-ram",
+      "0",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8081"
+    ],
+    "allowed_condition_changes": [
+      "GGUF model file/path/hash; naturally resulting weight bytes",
+      "trial seed according to paired schedule; identical schedule across quantizations"
+    ],
+    "request_overrides": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repeat_penalty": 1.0,
+      "frequency_penalty": 0.0,
+      "seed": 73191,
+      "max_tokens": 24576,
+      "reasoning_budget_tokens": 16384,
+      "stream": true,
+      "stream_options": {
+        "include_usage": true
+      },
+      "cache_prompt": false
+    },
+    "messages_policy": "one exact unchanged question as one user message; no system/history/examples/tools/grammar/response_format",
+    "server_defaults": {
+      "params": {
+        "seed": 4294967295,
+        "temperature": 1.0,
+        "dynatemp_range": 0.0,
+        "dynatemp_exponent": 1.0,
+        "top_k": 20,
+        "top_p": 0.949999988079071,
+        "min_p": 0.05000000074505806,
+        "top_n_sigma": -1.0,
+        "xtc_probability": 0.0,
+        "xtc_threshold": 0.10000000149011612,
+        "typical_p": 1.0,
+        "repeat_last_n": 64,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "dry_multiplier": 0.0,
+        "dry_base": 1.75,
+        "dry_allowed_length": 2,
+        "dry_penalty_last_n": 64,
+        "mirostat": 0,
+        "mirostat_tau": 5.0,
+        "mirostat_eta": 0.10000000149011612,
+        "adaptive_target": -1.0,
+        "adaptive_decay": 0.8999999761581421,
+        "max_tokens": -1,
+        "n_predict": -1,
+        "n_keep": 0,
+        "n_discard": 0,
+        "ignore_eos": false,
+        "stream": false,
+        "n_probs": 0,
+        "min_keep": 0,
+        "chat_format": "Content-only",
+        "reasoning_format": "none",
+        "reasoning_in_content": false,
+        "generation_prompt": "",
+        "samplers": [
+          "penalties",
+          "dry",
+          "top_n_sigma",
+          "top_k",
+          "typ_p",
+          "top_p",
+          "min_p",
+          "xtc",
+          "temperature"
+        ],
+        "speculative.types": "none",
+        "timings_per_token": false,
+        "post_sampling_probs": false,
+        "backend_sampling": false,
+        "lora": []
+      },
+      "n_ctx": 131072
+    },
+    "chat_template_sha256": "e84f32a23fdda27689f868aa4a1a5621f41133e51a48d7f3efcbea2839574259",
+    "candidate_full_seeds": [
+      73191,
+      73192,
+      73193
+    ],
+    "question_order": "random.Random(seed).shuffle(exam questions), same for every quantization",
+    "cache_ram_mib": 0,
+    "memory_thresholds": {
+      "minimum_free_vram_mib": 1536,
+      "maximum_model_process_swap_bytes": 0
+    },
+    "exam_sha256": {
+      "exam.json": "f651f664f0e0e4b571b4a0d2f41c7c1e13ea6c04a3d41b1d91b034e7197c3339",
+      "answer_key.json": "7abcd8c1df3ecfbcbd29763b1820e1fae12f0482ec528b29aa8c4fa64c470190",
+      "hidden_tests.json": "6854184bba4a8e61f2b17749660346622d3f85d89fd9ac341a3c0aa36faded59"
+    },
+    "models": [
+      {
+        "quant": "Q6_K",
+        "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q6_K.gguf",
+        "bytes": 30947309184,
+        "sha256": "a97ef79439194d8ec722bc0b6c316f0c41c0b477b35bbae8177c772ecbb0eb91",
+        "verified": true
+      },
+      {
+        "quant": "Q5_K_M",
+        "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q5_K_M.gguf",
+        "bytes": 25913185920,
+        "sha256": "ec438d1326eb11d8bb94785c54739cd4b60b01ae32bd8532e232a046b19d296d",
+        "verified": true
+      },
+      {
+        "quant": "Q4_K_M",
+        "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q4_K_M.gguf",
+        "bytes": 22285080192,
+        "sha256": "b46fedd33e0bfb0cae308aa3c158d0a4b2c4a1d2185a1ed6f093cdaf39064772",
+        "verified": true
+      },
+      {
+        "quant": "Q3_K_M",
+        "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q3_K_M.gguf",
+        "bytes": 17117951616,
+        "sha256": "17350b1355d32397cffe7d4b446fd9361dbb01aa26bbf41fc950aa595033794f",
+        "verified": true
+      },
+      {
+        "quant": "Q2_K",
+        "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q2_K.gguf",
+        "bytes": 13506778752,
+        "sha256": "673142cca6255bbb19774c8d438220d9ecfc3c8b215bc619d5e801bc37a35405",
+        "verified": true
+      },
+      {
+        "quant": "Q8_0",
+        "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q8_0.gguf",
+        "bytes": 37812647552,
+        "sha256": "bc57de096ec30e45773aa86103f35a8a32cea01f2193a53a3c636d618e4434e9",
+        "verified": true
+      }
+    ],
+    "docker_image": "python@sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1",
+    "pending_before_full": [
+      "User approval of final scope and concrete profile",
+      "Memory qualification of other five formats under same profile",
+      "Verify identical tokenizer/template metadata across all GGUFs",
+      "Finalize secondary reasoning-diagnostic and code-efficiency protocol before full collection",
+      "Freeze evaluator, profile and source hashes; implement/audit resumable full runner"
+    ],
+    "measurement_caveats": [
+      "attempt seconds includes response reception and deterministic scoring; engine timings separately retain prompt/decode times",
+      "whole-device GPU readings include desktop activity",
+      "host MemAvailable includes reclaimable mapped model pages",
+      "GPU energy monitoring began after pilot start; system energy uses rough CPU/other-component/PSU assumptions",
+      "pilot memory observations do not qualify a filled 128K context",
+      "do not assume GPU-maximized placement per format; that changes the placement-controlled protocol"
+    ]
+  },
+  "system": {
+    "kernel": "Linux cs4 7.0.0-38-generic #38~24.04.4-Ubuntu SMP PREEMPT_DYNAMIC Mon Sep 14 16:37:11 UTC 2 x86_64 x86_64 x86_64 GNU/Linux\n",
+    "cpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           48 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  32\nOn-line CPU(s) list:                     0-31\nVendor ID:                               AuthenticAMD\nModel name:                              AMD Ryzen 9 7950X 16-Core Processor\nCPU family:                              25\nModel:                                   97\nThread(s) per core:                      2\nCore(s) per socket:                      16\nSocket(s):                               1\nStepping:                                2\nFrequency boost:                         enabled\nCPU(s) scaling MHz:                      71%\nCPU max MHz:                             5883.1968\nCPU min MHz:                             425.2920\nBogoMIPS:                                8982.45\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good amd_lbr_v2 nopl xtopology nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpuid_fault cpb cat_l3 cdp_l3 hw_pstate ssbd mba perfmon_v2 ibrs ibpb stibp ibrs_enhanced vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local user_shstk avx512_bf16 clzero irperf xsaveerptr rdpru wbnoinvd cppc arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic vgif x2avic v_spec_ctrl vnmi avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid overflow_recov succor smca fsrm flush_l1d amd_lbr_pmc_freeze\nVirtualization:                          AMD-V\nL1d cache:                               512 KiB (16 instances)\nL1i cache:                               512 KiB (16 instances)\nL2 cache:                                16 MiB (16 instances)\nL3 cache:                                64 MiB (2 instances)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-31\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Mitigation; Safe RET\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; STIBP always-on; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Mitigation; Clear CPU buffers\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Mitigation; IBPB before exit to userspace\n",
+    "gpu": "\n==============NVSMI LOG==============\n\nTimestamp                                              : Sat Oct 31 18:07:06 2026\nDriver Version                                         : 595.91.07\nCUDA Version                                           : 13.2\n\nAttached GPUs                                          : 1\nGPU 00000000:01:00.0\n    Product Name                                       : NVIDIA GeForce RTX 4060 Ti\n    Product Brand                                      : GeForce\n    Product Architecture                               : Ada Lovelace\n    Display Mode                                       : Requested functionality has been deprecated\n    Display Attached                                   : No\n    Display Active                                     : Disabled\n    Persistence Mode                                   : Disabled\n    Addressing Mode                                    : HMM\n    MIG Mode\n        Current                                        : N/A\n        Pending                                        : N/A\n    Accounting Mode                                    : Disabled\n    Accounting Mode Buffer Size                        : 4000\n    Driver Model\n        Current                                        : N/A\n        Pending                                        : N/A\n    Serial Number                                      : N/A\n    GPU UUID                                           : GPU-138aec31-9255-1a57-95cd-48753c4ea467\n    GPU PDI                                            : 0x184366ab7a69b030\n    Minor Number                                       : 0\n    VBIOS Version                                      : 95.06.25.00.AC\n    MultiGPU Board                                     : No\n    Board ID                                           : 0x100\n    Board Part Number                                  : N/A\n    GPU Part Number                                    : 2805-351-A1\n    FRU Part Number                                    : N/A\n    Platform Info\n        Chassis Serial Number                          : N/A\n        Slot Number                                    : N/A\n        Tray Index                                     : N/A\n        Host ID                                        : N/A\n        Peer Type                                      : N/A\n        Module Id                                      : 1\n        GPU Fabric GUID                                : N/A\n    Inforom Version\n        Image Version                                  : G002.0000.00.03\n        OEM Object                                     : 2.0\n        ECC Object                                     : N/A\n        Power Management Object                        : N/A\n    Inforom BBX Object Flush\n        Latest Timestamp                               : N/A\n        Latest Duration                                : N/A\n    GPU Operation Mode\n        Current                                        : N/A\n        Pending                                        : N/A\n    GPU C2C Mode                                       : N/A\n    GPU Virtualization Mode\n        Virtualization Mode                            : None\n        Host VGPU Mode                                 : N/A\n        vGPU Heterogeneous Mode                        : N/A\n    GPU Recovery Action                                : None\n    GSP Firmware Version                               : 595.91.07\n    IBMNPU\n        Relaxed Ordering Mode                          : N/A\n    PCI\n        Bus                                            : 0x01\n        Device                                         : 0x00\n        Domain                                         : 0x0000\n        Base Classcode                                 : 0x3\n        Sub Classcode                                  : 0x0\n        Device Id                                      : 0x280510DE\n        Bus Id                                         : 00000000:01:00.0\n        Sub System Id                                  : 0x41121458\n        GPU Link Info\n            PCIe Generation\n                Max                                    : 4\n                Current                                : 1\n                Device Current                         : 1\n                Device Max                             : 4\n                Host Max                               : 4\n            Link Width\n                Max                                    : 8x\n                Current                                : 8x\n        Bridge Chip\n            Type                                       : N/A\n            Firmware                                   : N/A\n        Replays Since Reset                            : 0\n        Replay Number Rollovers                        : 0\n        Tx Throughput                                  : 585 KB/s\n        Rx Throughput                                  : 439 KB/s\n        Atomic Caps Outbound                           : N/A\n        Atomic Caps Inbound                            : N/A\n    Fan Speed                                          : 0 %\n    Performance State                                  : P8\n    Clocks Event Reasons\n        Idle                                           : Active\n        Applications Clocks Setting                    : Not Active\n        SW Power Cap                                   : Not Active\n        HW Slowdown                                    : Not Active\n            HW Thermal Slowdown                        : Not Active\n            HW Power Brake Slowdown                    : Not Active\n        Sync Boost                                     : Not Active\n        SW Thermal Slowdown                            : Not Active\n        Display Clock Setting                          : Not Active\n    Clocks Event Reasons Counters\n        SW Power Capping                               : 6060909 us\n        Sync Boost                                     : 0 us\n        SW Thermal Slowdown                            : 0 us\n        HW Thermal Slowdown                            : 0 us\n        HW Power Braking                               : 0 us\n    Sparse Operation Mode                              : N/A\n    FB Memory Usage\n        Total                                          : 16380 MiB\n        Reserved                                       : 431 MiB\n        Used                                           : 15 MiB\n        Free                                           : 15936 MiB\n    BAR1 Memory Usage\n        Total                                          : 16384 MiB\n        Used                                           : 2 MiB\n        Free                                           : 16382 MiB\n    Conf Compute Protected Memory Usage\n        Total                                          : 0 MiB\n        Used                                           : 0 MiB\n        Free                                           : 0 MiB\n    Compute Mode                                       : Default\n    Utilization\n        GPU                                            : 0 %\n        Memory                                         : 0 %\n        Encoder                                        : 0 %\n        Decoder                                        : 0 %\n        JPEG                                           : 0 %\n        OFA                                            : 0 %\n    Encoder Stats\n        Active Sessions                                : 0\n        Average FPS                                    : 0\n        Average Latency                                : 0\n    FBC Stats\n        Active Sessions                                : 0\n        Average FPS                                    : 0\n        Average Latency                                : 0\n    DRAM Encryption Mode\n        Current                                        : N/A\n        Pending                                        : N/A\n    ECC Mode\n        Current                                        : N/A\n        Pending                                        : N/A\n    ECC Errors\n        Volatile\n            SRAM Correctable                           : N/A\n            SRAM Uncorrectable Parity                  : N/A\n            SRAM Uncorrectable SEC-DED                 : N/A\n            DRAM Correctable                           : N/A\n            DRAM Uncorrectable                         : N/A\n        Aggregate\n            SRAM Correctable                           : N/A\n            SRAM Uncorrectable Parity                  : N/A\n            SRAM Uncorrectable SEC-DED                 : N/A\n            DRAM Correctable                           : N/A\n            DRAM Uncorrectable                         : N/A\n            SRAM Threshold Exceeded                    : N/A\n        Aggregate Uncorrectable SRAM Sources\n            SRAM L2                                    : N/A\n            SRAM SM                                    : N/A\n            SRAM Microcontroller                       : N/A\n            SRAM PCIE                                  : N/A\n            SRAM Other                                 : N/A\n        Channel Repair Pending                         : No\n        TPC Repair Pending                             : No\n        Unrepairable Memory                            : N/A\n    Retired Pages\n        Single Bit ECC                                 : N/A\n        Double Bit ECC                                 : N/A\n        Pending Page Blacklist                         : N/A\n    Remapped Rows\n        Correctable Error                              : 0\n        Inactive Correctable Error                     : 0\n        Uncorrectable Error                            : 0\n        Inactive Uncorrectable Error                   : 0\n        Pending                                        : No\n        Remapping Failure Occurred                     : No\n        Bank Remap Availability Histogram\n            Max                                        : 64 bank(s)\n            High                                       : 0 bank(s)\n            Partial                                    : 0 bank(s)\n            Low                                        : 0 bank(s)\n            None                                       : 0 bank(s)\n    Temperature\n        GPU Current Temp                               : 31 C\n        GPU T.Limit Temp                               : 52 C\n        GPU Shutdown T.Limit Temp                      : -7 C\n        GPU Slowdown T.Limit Temp                      : -2 C\n        GPU Max Operating T.Limit Temp                 : 0 C\n        GPU Target Temperature                         : 83 C\n        Memory Current Temp                            : N/A\n        Memory Max Operating T.Limit Temp              : N/A\n    GPU Power Readings\n        Average Power Draw                             : 3.73 W\n        Instantaneous Power Draw                       : 4.64 W\n        Current Power Limit                            : 165.00 W\n        Requested Power Limit                          : 165.00 W\n        Default Power Limit                            : 165.00 W\n        Min Power Limit                                : 150.00 W\n        Max Power Limit                                : 216.00 W\n    GPU Memory Power Readings \n        Average Power Draw                             : N/A\n        Instantaneous Power Draw                       : N/A\n    Module Power Readings\n        Average Power Draw                             : N/A\n        Instantaneous Power Draw                       : N/A\n        Current Power Limit                            : N/A\n        Requested Power Limit                          : N/A\n        Default Power Limit                            : N/A\n        Min Power Limit                                : N/A\n        Max Power Limit                                : N/A\n    Power Smoothing                                    : N/A\n    Workload Power Profiles\n        Requested Profiles                             : N/A\n        Enforced Profiles                              : N/A\n    EDPp Multiplier                                    : N/A\n    Clocks\n        Graphics                                       : 210 MHz\n        SM                                             : 210 MHz\n        Memory                                         : 405 MHz\n        Video                                          : 1185 MHz\n    Applications Clocks\n        Graphics                                       : Requested functionality has been deprecated\n        Memory                                         : Requested functionality has been deprecated\n    Default Applications Clocks\n        Graphics                                       : Requested functionality has been deprecated\n        Memory                                         : Requested functionality has been deprecated\n    Deferred Clocks\n        Memory                                         : N/A\n    Max Clocks\n        Graphics                                       : 3105 MHz\n        SM                                             : 3105 MHz\n        Memory                                         : 9001 MHz\n        Video                                          : 2415 MHz\n    Max Customer Boost Clocks\n        Graphics                                       : N/A\n    Clock Policy\n        Auto Boost                                     : N/A\n        Auto Boost Default                             : N/A\n    Fabric\n        State                                          : N/A\n        Status                                         : N/A\n        CliqueId                                       : N/A\n        ClusterUUID                                    : N/A\n        Health\n            Summary                                    : N/A\n            Bandwidth                                  : N/A\n            Route Recovery in progress                 : N/A\n            Route Unhealthy                            : N/A\n            Access Timeout Recovery                    : N/A\n            Incorrect Configuration                    : N/A\n            Partition Assigned                         : N/A\n    Processes\n        GPU instance ID                   : N/A\n        Compute instance ID               : N/A\n        Process ID                        : 3653\n            Type                          : G\n            Name                          : /usr/lib/xorg/Xorg\n            Used GPU Memory               : 4 MiB\n    Capabilities\n        EGM                                            : disabled\n\n",
+    "docker": "Docker version 29.1.3, build 29.1.3-0ubuntu3~24.04.2\n",
+    "python": "Python 3.12.3\n",
+    "storage": "NAME        MODEL           SIZE TYPE MOUNTPOINTS\nloop0                         4K loop /snap/bare/5\nloop1                        74M loop /snap/core22/2437\nloop2                        74M loop /snap/core22/2955\nloop3                      66.8M loop /snap/core24/1643\nloop4                      66.8M loop /snap/core24/2124\nloop5                     283.8M loop /snap/firefox/9057\nloop6                     283.9M loop /snap/firefox/9113\nloop7                      12.7M loop /snap/firmware-updater/258\nloop8                      12.7M loop /snap/firmware-updater/262\nloop9                     531.4M loop /snap/gnome-42-2204/247\nloop10                    531.5M loop /snap/gnome-42-2204/263\nloop11                    606.1M loop /snap/gnome-46-2404/153\nloop12                    614.5M loop /snap/gnome-46-2404/164\nloop13                     91.7M loop /snap/gtk-common-themes/1535\nloop14                      395M loop /snap/mesa-2404/1165\nloop15                      402M loop /snap/mesa-2404/1839\nloop16                      1.4M loop /snap/nvtop/344\nloop17                       12M loop /snap/snap-store/1447\nloop18                     11.6M loop /snap/snap-store/1468\nloop19                     50.3M loop /snap/snapd/27738\nloop20                     44.7M loop /snap/snapd/28254\nloop21                      828K loop /snap/snapd-desktop-integration/387\nloop22                      828K loop /snap/snapd-desktop-integration/391\nnvme0n1     SHPP41-2000GM   1.8T disk \n\u251c\u2500nvme0n1p1                   1G part /boot/efi\n\u2514\u2500nvme0n1p2                 1.8T part /\n",
+    "os_release": "PRETTY_NAME=\"Ubuntu 24.04.4 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.4 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo",
+    "swappiness": "60",
+    "cpu_governor": "powersave"
+  },
+  "new_runner_shared_config": {
+    "schema_version": 1,
+    "study_id": "qwen36-hard-v3-single-pass-v1",
+    "run_root": "/home/cs4/Documents/Codex/2026-10-31/un/outputs/benchmark/runs",
+    "dataset": {
+      "exam": {
+        "path": "/home/cs4/Documents/Codex/2026-10-31/un/work/qwen/hard_v3_clean/exam.json",
+        "sha256": "f651f664f0e0e4b571b4a0d2f41c7c1e13ea6c04a3d41b1d91b034e7197c3339"
+      },
+      "answer_key": {
+        "path": "/home/cs4/Documents/Codex/2026-10-31/un/work/qwen/hard_v3_clean/answer_key.json",
+        "sha256": "7abcd8c1df3ecfbcbd29763b1820e1fae12f0482ec528b29aa8c4fa64c470190"
+      },
+      "hidden_tests": {
+        "path": "/home/cs4/Documents/Codex/2026-10-31/un/work/qwen/hard_v3_clean/hidden_tests.json",
+        "sha256": "6854184bba4a8e61f2b17749660346622d3f85d89fd9ac341a3c0aa36faded59"
+      }
+    },
+    "runtime": {
+      "binary": "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/llama-server",
+      "sha256": "91e202530da33eed4206748ac51d472ce353a0b45ff12613e2419989f77e4469",
+      "commit": "23b0202a189c44a54625aadcb37a946dd1d6278d"
+    },
+    "models": {
+      "Q6_K": {
+        "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q6_K.gguf",
+        "sha256": "a97ef79439194d8ec722bc0b6c316f0c41c0b477b35bbae8177c772ecbb0eb91",
+        "bytes": 30947309184
+      },
+      "Q5_K_M": {
+        "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q5_K_M.gguf",
+        "sha256": "ec438d1326eb11d8bb94785c54739cd4b60b01ae32bd8532e232a046b19d296d",
+        "bytes": 25913185920
+      },
+      "Q4_K_M": {
+        "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q4_K_M.gguf",
+        "sha256": "b46fedd33e0bfb0cae308aa3c158d0a4b2c4a1d2185a1ed6f093cdaf39064772",
+        "bytes": 22285080192
+      },
+      "Q3_K_M": {
+        "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q3_K_M.gguf",
+        "sha256": "17350b1355d32397cffe7d4b446fd9361dbb01aa26bbf41fc950aa595033794f",
+        "bytes": 17117951616
+      },
+      "Q2_K": {
+        "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q2_K.gguf",
+        "sha256": "673142cca6255bbb19774c8d438220d9ecfc3c8b215bc619d5e801bc37a35405",
+        "bytes": 13506778752
+      },
+      "Q8_0": {
+        "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q8_0.gguf",
+        "sha256": "bc57de096ec30e45773aa86103f35a8a32cea01f2193a53a3c636d618e4434e9",
+        "bytes": 37812647552
+      }
+    },
+    "order": [
+      "Q8_0",
+      "Q6_K",
+      "Q5_K_M",
+      "Q4_K_M",
+      "Q3_K_M",
+      "Q2_K"
+    ],
+    "generation": {
+      "seed": 73191,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repeat_penalty": 1.0,
+      "frequency_penalty": 0.0,
+      "max_tokens": 24576,
+      "reasoning_budget_tokens": 16384,
+      "cache_prompt": false,
+      "stream": true,
+      "stream_options": {
+        "include_usage": true
+      }
+    },
+    "server": {
+      "context": 131072,
+      "batch": 2048,
+      "ubatch": 512,
+      "cache_k": "f16",
+      "cache_v": "f16",
+      "parallel": 1,
+      "threads": 16,
+      "threads_batch": 16,
+      "flash_attention": "auto",
+      "cache_ram": 0,
+      "host": "127.0.0.1",
+      "port": 8081,
+      "log_verbosity": 4
+    },
+    "placement": {
+      "policy": "minimum CPU expert layers qualifying at shared context; all other layers GPU; embeddings GPU; fit off",
+      "min_cpu_moe": 0,
+      "max_cpu_moe": 40,
+      "minimum_free_vram_mib": 1536,
+      "minimum_host_available_mib": 2048,
+      "probe_repetitions": 400,
+      "probe_max_tokens": 1
+    },
+    "scoring": {
+      "primary": "solution_correct",
+      "strict_format_recorded_separately": true,
+      "math": "exact recursive JSON type/value/key/list-order equality; no numeric coercion",
+      "code": "unchanged extracted fenced solve(data); all hidden tests; policy compliance; no input mutation"
+    },
+    "sandbox": {
+      "image": "python@sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1",
+      "memory_mib": 256,
+      "cpus": 1,
+      "pids": 32,
+      "cpu_seconds": 10,
+      "wall_seconds": 20,
+      "tmp_mib": 16
+    },
+    "monitor": {
+      "sample_seconds": 1,
+      "idle_seconds": 15,
+      "checkpoint_seconds": 5,
+      "require_cpu_energy": true,
+      "socket_timeout_seconds": 1800,
+      "load_timeout_seconds": 600
+    },
+    "upload": {
+      "remote": "gdrive:",
+      "root_folder_id": "1bmtenNcjnzYYhNIdOWFLA72-NtKT84Wb",
+      "interval_seconds": 600,
+      "bandwidth_limit": "4M",
+      "timeout_seconds": 120,
+      "enabled": true
+    },
+    "smoke": {
+      "questions": 2,
+      "thinking_tokens": 64,
+      "output_tokens": 512,
+      "idle_seconds": 3,
+      "cpu_moe_layers": 30
+    },
+    "protocol_notes": [
+      "One pass; original exam file order is identical across models.",
+      "No system prompt, examples, tools, grammar, history or answer-key exposure.",
+      "No generated code executes during inference. Coding grades pending until model shutdown.",
+      "Only model identity and CPU/GPU placement differ by quantization.",
+      "CPU/GPU package/device energy, not whole-machine wall energy. No CPU power estimates.",
+      "An interrupted generation is preserved and explicitly restarted; completed generations are never repeated.",
+      "GPU-maximized placement differs from the earlier placement-controlled pilot."
+    ],
+    "tokenizer_metadata_sha256": "58ddb1a0e01133f741e9c01ec98d508f3662de2a991f625111d5bd954cf12ad9",
+    "chat_template_sha256": "e84f32a23fdda27689f868aa4a1a5621f41133e51a48d7f3efcbea2839574259"
+  },
+  "historical_deviations": "Immediate code grading in original pilot; CPU energy unavailable; budget cutoff trace unavailable. Imported pilot is not a full-study condition."
+}
