@@ -1,167 +1,20 @@
 {
   "per_prompt": {
-    "HV3-MODULAR_ROOTS-01": {
-      "seconds": 2.018191871999079,
-      "raw": {
-        "gpu_kwh": 3.095539316408532e-05,
-        "cpu_kwh": 4.9173796111111115e-05,
-        "combined_kwh": 8.012918927519643e-05
-      },
-      "above_idle_signed": {
-        "gpu_kwh": 2.8896758479074147e-05,
-        "cpu_kwh": 3.540774783609523e-05,
-        "combined_kwh": 6.430450631516937e-05
-      },
-      "idle_baseline": {
-        "seconds": 3.041438604001087,
-        "gpu_watts": 3.6721408746430697,
-        "cpu_watts": 24.555531353403353,
-        "method": "GPU trapezoidal driver watts; CPU package accumulated microjoules, wrap-corrected; whole device/package, includes other activity"
-      },
-      "scope": "GPU device plus CPU package; not whole-machine wall energy"
-    },
-    "HV3-ARRAY_RANGES-01": {
-      "seconds": 14.178449913000804,
-      "raw": {
-        "gpu_kwh": 0.0002918675840369469,
-        "cpu_kwh": 0.00040370005888888894,
-        "combined_kwh": 0.0006955676429258359
-      },
-      "above_idle_signed": {
-        "gpu_kwh": 0.00027740501029677753,
-        "cpu_kwh": 0.00030698912239406935,
-        "combined_kwh": 0.0005843941326908468
-      },
-      "idle_baseline": {
-        "seconds": 3.041438604001087,
-        "gpu_watts": 3.6721408746430697,
-        "cpu_watts": 24.555531353403353,
-        "method": "GPU trapezoidal driver watts; CPU package accumulated microjoules, wrap-corrected; whole device/package, includes other activity"
-      },
-      "scope": "GPU device plus CPU package; not whole-machine wall energy"
-    }
+    "HV3-MODULAR_ROOTS-01": null,
+    "HV3-ARRAY_RANGES-01": null
   },
   "inference_totals": {
     "raw": {
-      "gpu_kwh": 0.00032282297720103223,
-      "cpu_kwh": 0.00045287385500000007,
-      "combined_kwh": 0.0007756968322010322
+      "gpu_kwh": null,
+      "cpu_kwh": null,
+      "combined_kwh": null
     },
     "above_idle_signed": {
-      "gpu_kwh": 0.00030630176877585166,
-      "cpu_kwh": 0.0003423968702301646,
-      "combined_kwh": 0.0006486986390060161
+      "gpu_kwh": null,
+      "cpu_kwh": null,
+      "combined_kwh": null
     }
   },
-  "execution_segments": [
-    {
-      "time": "2026-11-01T01:26:59.234534+00:00",
-      "segment_id": "c0ce1192f9854dc18b890087b4c5a4e6",
-      "totals_j": {
-        "gpu_j": 1268.7829430773593,
-        "cpu_j": 1869.8762009999998
-      },
-      "by_phase": {
-        "idle": {
-          "gpu_j": 11.510838394038355,
-          "cpu_j": 79.423917,
-          "seconds": 3.1363376789995527
-        },
-        "loading": {
-          "gpu_j": 46.361709094233404,
-          "cpu_j": 103.11563900000002,
-          "seconds": 2.135298122999302
-        },
-        "inference": {
-          "gpu_j": 1196.2038049349067,
-          "cpu_j": 1667.0551920000003,
-          "seconds": 16.67577289700057
-        },
-        "between_phases": {
-          "gpu_j": 2.0127908524308715,
-          "cpu_j": 1.907998,
-          "seconds": 0.033316078001007554
-        },
-        "coding_grading": {
-          "gpu_j": 12.693799801749993,
-          "cpu_j": 18.373455,
-          "seconds": 0.23265762099981657
-        }
-      },
-      "baseline": {
-        "seconds": 3.041438604001087,
-        "gpu_watts": 3.6721408746430697,
-        "cpu_watts": 24.555531353403353,
-        "method": "GPU trapezoidal driver watts; CPU package accumulated microjoules, wrap-corrected; whole device/package, includes other activity"
-      },
-      "cpu_counters": [
-        {
-          "path": "/sys/class/powercap/intel-rapl:0/energy_uj",
-          "max_energy_range_uj": 65532610987
-        }
-      ],
-      "telemetry_errors": [],
-      "scope": "Observed execution segment; includes baseline, loading/qualification, inference, grading and backup work. CPU/GPU only, not wall energy."
-    }
-  ],
-  "scope": "CPU package plus GPU device only; above-idle is a signed baseline subtraction, not wall electricity.",
-  "whole_run_observed_raw": {
-    "gpu_kwh": 0.0003524397064103776,
-    "cpu_kwh": 0.0005194100558333333,
-    "combined_kwh": 0.0008718497622437108
-  },
-  "whole_run_above_idle_signed": {
-    "gpu_kwh": 0.00032978118711377377,
-    "cpu_kwh": 0.0003678929980724352,
-    "combined_kwh": 0.0006976741851862089
-  },
-  "observed_seconds": 22.21338239800025,
-  "above_idle_coverage_seconds": 22.21338239800025,
-  "by_phase": {
-    "idle": {
-      "gpu_kwh": 3.197455109455099e-06,
-      "cpu_kwh": 2.206219916666667e-05,
-      "combined_kwh": 2.5259654276121766e-05,
-      "seconds": 3.1363376789995527
-    },
-    "loading": {
-      "gpu_kwh": 1.2878252526175946e-05,
-      "cpu_kwh": 2.864323305555556e-05,
-      "combined_kwh": 4.152148558173151e-05,
-      "seconds": 2.135298122999302
-    },
-    "inference": {
-      "gpu_kwh": 0.00033227883470414075,
-      "cpu_kwh": 0.00046307088666666673,
-      "combined_kwh": 0.0007953497213708075,
-      "seconds": 16.67577289700057
-    },
-    "between_phases": {
-      "gpu_kwh": 5.591085701196865e-07,
-      "cpu_kwh": 5.299994444444444e-07,
-      "combined_kwh": 1.089108014564131e-06,
-      "seconds": 0.033316078001007554
-    },
-    "coding_grading": {
-      "gpu_kwh": 3.526055500486109e-06,
-      "cpu_kwh": 5.1037375e-06,
-      "combined_kwh": 8.62979300048611e-06,
-      "seconds": 0.23265762099981657
-    }
-  },
-  "per_question_all_attempts_observed": {
-    "HV3-MODULAR_ROOTS-01": {
-      "gpu_kwh": 3.095539316408532e-05,
-      "cpu_kwh": 4.9173796111111115e-05,
-      "combined_kwh": 8.012918927519643e-05,
-      "seconds": 2.0101810960004514
-    },
-    "HV3-ARRAY_RANGES-01": {
-      "gpu_kwh": 0.0002918675840369469,
-      "cpu_kwh": 0.00040370005888888894,
-      "combined_kwh": 0.0006955676429258359,
-      "seconds": 14.178598368000166
-    }
-  },
-  "measurement": "Fsynced one-second telemetry integrated once, including interrupted attempts. CPU package plus GPU device only. No measurements during a powered-off gap."
+  "execution_segments": [],
+  "scope": "CPU package plus GPU device only; above-idle is a signed baseline subtraction, not wall electricity."
 }
