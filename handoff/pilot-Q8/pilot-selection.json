@@ -1,0 +1,102 @@
+[
+  {
+    "id": "HV3-SET_MEMBERSHIP-05",
+    "category": "logic_data_constraints"
+  },
+  {
+    "id": "HV3-FUNCTIONAL_JUMPS-01",
+    "category": "algorithmic_python"
+  },
+  {
+    "id": "HV3-VERTEX_COVER-01",
+    "category": "discrete_optimization_graphs"
+  },
+  {
+    "id": "HV3-DEPENDENCY_DAG-04",
+    "category": "algorithmic_python"
+  },
+  {
+    "id": "HV3-RESOURCE_PATH-01",
+    "category": "discrete_optimization_graphs"
+  },
+  {
+    "id": "HV3-PERMUTATION_PROBABILITY-03",
+    "category": "exact_probability"
+  },
+  {
+    "id": "HV3-DFA_LANGUAGE-01",
+    "category": "logic_data_constraints"
+  },
+  {
+    "id": "HV3-WALK_PROBABILITY-02",
+    "category": "exact_probability"
+  },
+  {
+    "id": "HV3-INTERVAL_SWEEP-05",
+    "category": "algorithmic_python"
+  },
+  {
+    "id": "HV3-DIGIT_AUTOMATON-01",
+    "category": "arithmetic_number_theory"
+  },
+  {
+    "id": "HV3-INTERPOLATION-04",
+    "category": "algebra_equations"
+  },
+  {
+    "id": "HV3-COUPLED_RECURRENCE-02",
+    "category": "finite_sequences_recurrences"
+  },
+  {
+    "id": "HV3-RATIONAL_ROOTS-04",
+    "category": "algebra_equations"
+  },
+  {
+    "id": "HV3-ASSIGNMENT-01",
+    "category": "discrete_optimization_graphs"
+  },
+  {
+    "id": "HV3-TREE_DP-02",
+    "category": "algorithmic_python"
+  },
+  {
+    "id": "HV3-FACTORIAL_VALUATION-02",
+    "category": "arithmetic_number_theory"
+  },
+  {
+    "id": "HV3-SUBSTITUTION-05",
+    "category": "finite_sequences_recurrences"
+  },
+  {
+    "id": "HV3-FINITE_LINEAR-03",
+    "category": "algebra_equations"
+  },
+  {
+    "id": "HV3-MODULAR_ROOTS-05",
+    "category": "arithmetic_number_theory"
+  },
+  {
+    "id": "HV3-SUBTRACTION_GAME-05",
+    "category": "finite_sequences_recurrences"
+  },
+  {
+    "id": "HV3-SUBSET_PROBABILITY-05",
+    "category": "exact_probability"
+  },
+  {
+    "id": "HV3-INDEPENDENT_SUBSET-02",
+    "category": "combinatorics"
+  },
+  {
+    "id": "HV3-RESTRICTED_PERMUTATION-05",
+    "category": "combinatorics"
+  },
+  {
+    "id": "HV3-BOUNDED_COMPOSITION-03",
+    "category": "combinatorics"
+  },
+  {
+    "id": "HV3-STRING_DP-01",
+    "category": "algorithmic_python"
+  }
+]

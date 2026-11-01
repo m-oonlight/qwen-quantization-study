@@ -1,0 +1,21 @@
+{
+  "quant": "Q8_0",
+  "purpose": "historical 25-question pilot; excluded from study",
+  "planned": 25,
+  "inference_completed": 25,
+  "correct": 21,
+  "incorrect": 4,
+  "pending": 0,
+  "infrastructure_errors": 0,
+  "strict_correct": 16,
+  "output_truncated": 0,
+  "coding_pending": 0,
+  "thinking_budget_exhausted": 0,
+  "thinking_cutoff_unknown": 25,
+  "complete": true,
+  "score_out_of": 25,
+  "score": 21,
+  "accuracy_among_graded": 0.84,
+  "inference_seconds": 11792.854018067997,
+  "updated": "2026-11-01T01:11:53.196400+00:00"
+}

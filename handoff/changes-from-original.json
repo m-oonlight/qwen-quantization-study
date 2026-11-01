@@ -1,0 +1,35 @@
+{
+  "baseline_repository": "https://github.com/m-oonlight/qwen3.5-9b_analysis",
+  "baseline_commit": "e0f3d0c4dd506a079927513ab45d8674ca60c6de",
+  "files": {
+    "exam.json": {
+      "baseline_sha256": "2e42638d1fd60e8f0142220e07b7935005946ec441f69914bbe8a84a45ea4b40",
+      "current_sha256": "f651f664f0e0e4b571b4a0d2f41c7c1e13ea6c04a3d41b1d91b034e7197c3339",
+      "byte_identical": false
+    },
+    "answer_key.json": {
+      "baseline_sha256": "7abcd8c1df3ecfbcbd29763b1820e1fae12f0482ec528b29aa8c4fa64c470190",
+      "current_sha256": "7abcd8c1df3ecfbcbd29763b1820e1fae12f0482ec528b29aa8c4fa64c470190",
+      "byte_identical": true
+    },
+    "hidden_tests.json": {
+      "baseline_sha256": "5782b557a164b2b1e2624734e95b304beeca12e4c99c4cf2e1f6e2135bfa50e8",
+      "current_sha256": "6854184bba4a8e61f2b17749660346622d3f85d89fd9ac341a3c0aa36faded59",
+      "byte_identical": false
+    }
+  },
+  "question_order_unchanged": true,
+  "question_ids_unchanged": true,
+  "answer_key_byte_identical": true,
+  "all_2468_expected_test_outputs_unchanged": true,
+  "question_texts_changed": 250,
+  "hidden_test_inputs_changed": 1183,
+  "removed_unused_input_fields": {
+    "k": 747,
+    "duration": 199,
+    "target": 50,
+    "queries": 141,
+    "weights": 96
+  },
+  "removed_unused_input_fields_total": 1233
+}

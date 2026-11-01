@@ -1,0 +1,93 @@
+{
+  "purpose": "Quantization degradation: compare correctness, strict format, and question-level failure changes; preserve emitted reasoning for later analysis.",
+  "model_manifest": "model-manifest.json",
+  "runtime": {
+    "engine": "llama.cpp",
+    "commit": "23b0202a189c44a54625aadcb37a946dd1d6278d",
+    "historical_build": "b11552"
+  },
+  "exam": {
+    "file": "exam.json",
+    "questions": 250,
+    "math_logic": 200,
+    "coding": 50,
+    "coding_tests": 2468,
+    "order": "original file order; identical for every quantization",
+    "passes": 1,
+    "messages": "exact unchanged question text as one user message in a fresh conversation; no system/history/examples/answer keys/tools/grammar"
+  },
+  "order": [
+    "Q8_0",
+    "Q6_K",
+    "Q5_K_M",
+    "Q4_K_M",
+    "Q3_K_M",
+    "Q2_K"
+  ],
+  "generation": {
+    "seed": 73191,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 1.5,
+    "repeat_penalty": 1.0,
+    "frequency_penalty": 0.0,
+    "max_tokens": 24576,
+    "reasoning_budget_tokens": 16384,
+    "cache_prompt": false,
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "server": {
+    "context": 131072,
+    "batch": 2048,
+    "ubatch": 512,
+    "cache_k": "f16",
+    "cache_v": "f16",
+    "parallel": 1,
+    "threads": 16,
+    "threads_batch": 16,
+    "flash_attention": "auto",
+    "cache_ram": 0
+  },
+  "placement": {
+    "policy": "minimum CPU expert layers qualifying at shared context; all other layers GPU; embeddings GPU; fit off",
+    "per_model_cpu_gpu_split_may_differ": true,
+    "minimum_free_vram_mib": 1536,
+    "maximum_model_process_swap_bytes": 0,
+    "minimum_host_available_mib": 2048
+  },
+  "grading": {
+    "primary": "solution_correct",
+    "strict_format_recorded_separately": true,
+    "math": "exact recursive JSON type/value/key/list-order equality; no numeric coercion",
+    "code": "unchanged extracted fenced solve(data); all hidden tests; policy compliance; no input mutation"
+  },
+  "sandbox": {
+    "image": "python@sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1",
+    "memory_mib": 256,
+    "cpus": 1,
+    "pids": 32,
+    "cpu_seconds": 10,
+    "wall_seconds": 20,
+    "tmp_mib": 16
+  },
+  "request_timeout_seconds": 1800,
+  "outputs": [
+    "exact question and request",
+    "entire emitted reasoning",
+    "entire final answer",
+    "deterministic correctness and separate strict-format result",
+    "elapsed inference time, usage, decode tokens/sec, finish reason",
+    "thinking-budget and total-output cutoff flags",
+    "coding passed/total and first failing test index/reason",
+    "exact shared settings and actual per-model placement"
+  ],
+  "coding_workflow": "infer all questions; stop model; grade coding serially in Docker only; infrastructure errors stay unresolved rather than incorrect",
+  "future_paper_grading": "Later LLM/reviewer assessment of reasoning and failure types is separate; criteria are not finalized. No LLM grading is implemented.",
+  "energy_collection": "Not requested for cloud handoff; omit power/energy monitoring when porting.",
+  "status": "No full 250-question model run collected. Existing pilot/smoke excluded from study."
+}

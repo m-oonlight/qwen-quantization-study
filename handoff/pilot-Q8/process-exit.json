@@ -1,0 +1,6 @@
+{
+  "launcher_session_exit_code": 143,
+  "observation": "Reported after all 25 attempts, per-attempt scores, raw streams and pilot summary were saved. Server log records cleanup. No model process remains. No attempt was retried or discarded. Cause of launcher status was not established.",
+  "attempt_infrastructure_failures": 0,
+  "artifact_validation": "25 completed attempts, exact requests verified, exam hashes unchanged, ZIP integrity/hash check passed"
+}
