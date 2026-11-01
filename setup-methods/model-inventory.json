@@ -1,0 +1,79 @@
+{
+  "models": [
+    {
+      "quant": "Q6_K",
+      "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q6_K.gguf",
+      "bytes": 30947309184,
+      "sha256": "a97ef79439194d8ec722bc0b6c316f0c41c0b477b35bbae8177c772ecbb0eb91",
+      "verified": true
+    },
+    {
+      "quant": "Q5_K_M",
+      "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q5_K_M.gguf",
+      "bytes": 25913185920,
+      "sha256": "ec438d1326eb11d8bb94785c54739cd4b60b01ae32bd8532e232a046b19d296d",
+      "verified": true
+    },
+    {
+      "quant": "Q4_K_M",
+      "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q4_K_M.gguf",
+      "bytes": 22285080192,
+      "sha256": "b46fedd33e0bfb0cae308aa3c158d0a4b2c4a1d2185a1ed6f093cdaf39064772",
+      "verified": true
+    },
+    {
+      "quant": "Q3_K_M",
+      "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q3_K_M.gguf",
+      "bytes": 17117951616,
+      "sha256": "17350b1355d32397cffe7d4b446fd9361dbb01aa26bbf41fc950aa595033794f",
+      "verified": true
+    },
+    {
+      "quant": "Q2_K",
+      "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q2_K.gguf",
+      "bytes": 13506778752,
+      "sha256": "673142cca6255bbb19774c8d438220d9ecfc3c8b215bc619d5e801bc37a35405",
+      "verified": true
+    },
+    {
+      "quant": "Q8_0",
+      "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q8_0.gguf",
+      "bytes": 37812647552,
+      "sha256": "bc57de096ec30e45773aa86103f35a8a32cea01f2193a53a3c636d618e4434e9",
+      "verified": true
+    }
+  ],
+  "runtime_hash_checks": {
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-base.so": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-base.so.0": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-base.so.0.26.0": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-cpu.so": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-cpu.so.0": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-cpu.so.0.26.0": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-cuda.so": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-cuda.so.0": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-cuda.so.0.26.0": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml.so": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml.so.0": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml.so.0.26.0": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-batched-bench-impl.so": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-bench-impl.so": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-cli-impl.so": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-common.so": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-common.so.0": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-common.so.0.6.0": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-completion-impl.so": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-fit-params-impl.so": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-perplexity-impl.so": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-quantize-impl.so": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-server-impl.so": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama.so": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama.so.0": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama.so.0.6.0": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libmtmd.so": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libmtmd.so.0": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libmtmd.so.0.6.0": true,
+    "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/llama-server": true
+  },
+  "binary": "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/llama-server"
+}

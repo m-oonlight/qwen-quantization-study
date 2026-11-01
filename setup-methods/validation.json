@@ -1,0 +1,17 @@
+{
+  "cpu_docker_tests": 21,
+  "test_status": "passed",
+  "tokenizer_metadata_identical": true,
+  "exact_cpu_energy_read_access": "verified; group cs4; udev rule installed",
+  "historical_pilot_mechanical_solution_score": "21/25; all 5 coding tasks passed",
+  "historical_pilot_energy": "CPU unavailable; partial GPU only; no estimated CPU values substituted",
+  "full_benchmark_started": false,
+  "privacy": "Only allowlisted public run outputs and this methods folder are uploadable. Actual answer key and hidden tests remain local. The older q8-pilot-package.zip is NOT uploaded because it includes private reproducibility files.",
+  "document_headings_match_canonical_grades": true,
+  "no_model_server_remaining": true,
+  "cpu_docker_and_offline_git_tests": 29,
+  "github_repository": "m-oonlight/qwen-quantization-study",
+  "github_private": true,
+  "github_status": "initial publication underway; verified commit recorded in per-run upload.json",
+  "smoke_status": "fresh GitHub-enabled smoke pending; old smoke preserved locally"
+}

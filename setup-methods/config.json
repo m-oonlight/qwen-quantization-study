@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "study_id": "qwen36-hard-v3-single-pass-v1",
+  "run_root": "/home/cs4/Documents/Codex/2026-10-31/un/outputs/benchmark/runs",
+  "dataset": {
+    "exam": {
+      "path": "/home/cs4/Documents/Codex/2026-10-31/un/work/qwen/hard_v3_clean/exam.json",
+      "sha256": "f651f664f0e0e4b571b4a0d2f41c7c1e13ea6c04a3d41b1d91b034e7197c3339"
+    },
+    "answer_key": {
+      "path": "/home/cs4/Documents/Codex/2026-10-31/un/work/qwen/hard_v3_clean/answer_key.json",
+      "sha256": "7abcd8c1df3ecfbcbd29763b1820e1fae12f0482ec528b29aa8c4fa64c470190"
+    },
+    "hidden_tests": {
+      "path": "/home/cs4/Documents/Codex/2026-10-31/un/work/qwen/hard_v3_clean/hidden_tests.json",
+      "sha256": "6854184bba4a8e61f2b17749660346622d3f85d89fd9ac341a3c0aa36faded59"
+    }
+  },
+  "runtime": {
+    "binary": "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/llama-server",
+    "sha256": "91e202530da33eed4206748ac51d472ce353a0b45ff12613e2419989f77e4469",
+    "commit": "23b0202a189c44a54625aadcb37a946dd1d6278d",
+    "shared_libraries": {
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-base.so": "037dd7abda6b3897fe649f0176f20b6889d586e36e03018417aca1bff67a1449",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-base.so.0": "037dd7abda6b3897fe649f0176f20b6889d586e36e03018417aca1bff67a1449",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-base.so.0.26.0": "037dd7abda6b3897fe649f0176f20b6889d586e36e03018417aca1bff67a1449",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-cpu.so": "f812e4da0c0574e68b0736cbf35bc211e694eb4c9853df17bef6ac119928ed23",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-cpu.so.0": "f812e4da0c0574e68b0736cbf35bc211e694eb4c9853df17bef6ac119928ed23",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-cpu.so.0.26.0": "f812e4da0c0574e68b0736cbf35bc211e694eb4c9853df17bef6ac119928ed23",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-cuda.so": "e6f826b5d7cb8267d2132221e1f0d069bdbedd141b0ffa84c03b0906154f55b6",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-cuda.so.0": "e6f826b5d7cb8267d2132221e1f0d069bdbedd141b0ffa84c03b0906154f55b6",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml-cuda.so.0.26.0": "e6f826b5d7cb8267d2132221e1f0d069bdbedd141b0ffa84c03b0906154f55b6",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml.so": "20d6b8a71fd6c3c1591ba11d45f63dbaa3d94e51ef9e1c801a4c8134972040ca",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml.so.0": "20d6b8a71fd6c3c1591ba11d45f63dbaa3d94e51ef9e1c801a4c8134972040ca",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libggml.so.0.26.0": "20d6b8a71fd6c3c1591ba11d45f63dbaa3d94e51ef9e1c801a4c8134972040ca",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-batched-bench-impl.so": "b60bb6cd237dd4647db7fd5141feca51d5ca4120950665f67e85fe680d594b86",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-bench-impl.so": "190a6485fa573575b989981fd61825c43862d6ea3d1aa33647507ee6165488ca",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-cli-impl.so": "a414a0098e051a839eea13f9df47fbe2021460169546d77b4dea8a732ab51515",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-common.so": "ff151731f4e5eb55d9d86fbeeb3b104253876902c02987be115eeade483afb4a",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-common.so.0": "ff151731f4e5eb55d9d86fbeeb3b104253876902c02987be115eeade483afb4a",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-common.so.0.6.0": "ff151731f4e5eb55d9d86fbeeb3b104253876902c02987be115eeade483afb4a",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-completion-impl.so": "56b68bcd40e9841ce70d758e3cbd55a715e62a6673aeb5a2a33ba0398e0dba8d",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-fit-params-impl.so": "cbf36c66fa9e3f44fc5967f007e1be779027a5eedeb3d335cc61d562e6464ae5",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-perplexity-impl.so": "b9bfaae0df2ef3e429b1754948c7a61dafdb6ccda90174d4c318f88ea67bbd2a",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-quantize-impl.so": "55a4148e70021cdf1e012e086312c30597c1647d034bc97ba60e2406307a0d76",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama-server-impl.so": "692ef992a480c8412e28af033c5788fa6b517b458aca468e46bea1b7ffd127c5",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama.so": "bc753462cbfe1589375bbe78b3a4cfcaec6a071ae6cccaa593c757d27f260281",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama.so.0": "bc753462cbfe1589375bbe78b3a4cfcaec6a071ae6cccaa593c757d27f260281",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libllama.so.0.6.0": "bc753462cbfe1589375bbe78b3a4cfcaec6a071ae6cccaa593c757d27f260281",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libmtmd.so": "8e80d684bc52e08df438126d1350e2f6bfad1d464d80f9a229ada37ebf2bea8e",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libmtmd.so.0": "8e80d684bc52e08df438126d1350e2f6bfad1d464d80f9a229ada37ebf2bea8e",
+      "/home/cs4/Documents/Experiments 1/llama.cpp/build/bin/libmtmd.so.0.6.0": "8e80d684bc52e08df438126d1350e2f6bfad1d464d80f9a229ada37ebf2bea8e"
+    }
+  },
+  "models": {
+    "Q6_K": {
+      "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q6_K.gguf",
+      "sha256": "a97ef79439194d8ec722bc0b6c316f0c41c0b477b35bbae8177c772ecbb0eb91",
+      "bytes": 30947309184
+    },
+    "Q5_K_M": {
+      "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q5_K_M.gguf",
+      "sha256": "ec438d1326eb11d8bb94785c54739cd4b60b01ae32bd8532e232a046b19d296d",
+      "bytes": 25913185920
+    },
+    "Q4_K_M": {
+      "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q4_K_M.gguf",
+      "sha256": "b46fedd33e0bfb0cae308aa3c158d0a4b2c4a1d2185a1ed6f093cdaf39064772",
+      "bytes": 22285080192
+    },
+    "Q3_K_M": {
+      "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q3_K_M.gguf",
+      "sha256": "17350b1355d32397cffe7d4b446fd9361dbb01aa26bbf41fc950aa595033794f",
+      "bytes": 17117951616
+    },
+    "Q2_K": {
+      "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q2_K.gguf",
+      "sha256": "673142cca6255bbb19774c8d438220d9ecfc3c8b215bc619d5e801bc37a35405",
+      "bytes": 13506778752
+    },
+    "Q8_0": {
+      "path": "/home/cs4/Documents/Codex/2026-10-10/https-chatgpt-com-share-6acaa861-df60/outputs/Qwen3.6-study/models/Qwen_Qwen3.6-35B-A3B-Q8_0.gguf",
+      "sha256": "bc57de096ec30e45773aa86103f35a8a32cea01f2193a53a3c636d618e4434e9",
+      "bytes": 37812647552
+    }
+  },
+  "order": [
+    "Q8_0",
+    "Q6_K",
+    "Q5_K_M",
+    "Q4_K_M",
+    "Q3_K_M",
+    "Q2_K"
+  ],
+  "generation": {
+    "seed": 73191,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 1.5,
+    "repeat_penalty": 1.0,
+    "frequency_penalty": 0.0,
+    "max_tokens": 24576,
+    "reasoning_budget_tokens": 16384,
+    "cache_prompt": false,
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "server": {
+    "context": 131072,
+    "batch": 2048,
+    "ubatch": 512,
+    "cache_k": "f16",
+    "cache_v": "f16",
+    "parallel": 1,
+    "threads": 16,
+    "threads_batch": 16,
+    "flash_attention": "auto",
+    "cache_ram": 0,
+    "host": "127.0.0.1",
+    "port": 8081,
+    "log_verbosity": 4
+  },
+  "placement": {
+    "policy": "minimum CPU expert layers qualifying at shared context; all other layers GPU; embeddings GPU; fit off",
+    "min_cpu_moe": 0,
+    "max_cpu_moe": 40,
+    "minimum_free_vram_mib": 1536,
+    "minimum_host_available_mib": 2048,
+    "probe_repetitions": 400,
+    "probe_max_tokens": 1
+  },
+  "scoring": {
+    "primary": "solution_correct",
+    "strict_format_recorded_separately": true,
+    "math": "exact recursive JSON type/value/key/list-order equality; no numeric coercion",
+    "code": "unchanged extracted fenced solve(data); all hidden tests; policy compliance; no input mutation"
+  },
+  "sandbox": {
+    "image": "python@sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1",
+    "memory_mib": 256,
+    "cpus": 1,
+    "pids": 32,
+    "cpu_seconds": 10,
+    "wall_seconds": 20,
+    "tmp_mib": 16
+  },
+  "monitor": {
+    "sample_seconds": 1,
+    "idle_seconds": 15,
+    "checkpoint_seconds": 5,
+    "require_cpu_energy": true,
+    "socket_timeout_seconds": 1800,
+    "load_timeout_seconds": 600
+  },
+  "upload": {
+    "provider": "github",
+    "repository": "m-oonlight/qwen-quantization-study",
+    "checkout": "/home/cs4/Documents/Codex/2026-10-31/un/outputs/benchmark/github-repository",
+    "interval_seconds": 600,
+    "log_chunk_bytes": 8388608,
+    "timeout_seconds": 120,
+    "enabled": true
+  },
+  "smoke": {
+    "questions": 2,
+    "thinking_tokens": 64,
+    "output_tokens": 1024,
+    "idle_seconds": 3,
+    "cpu_moe_layers": 30
+  },
+  "protocol_notes": [
+    "One pass; original exam file order is identical across models.",
+    "No system prompt, examples, tools, grammar, history or answer-key exposure.",
+    "No generated code executes during inference. Coding grades pending until model shutdown.",
+    "Only model identity and CPU/GPU placement differ by quantization.",
+    "CPU/GPU package/device energy, not whole-machine wall energy. No CPU power estimates.",
+    "An interrupted generation is preserved and explicitly restarted; completed generations are never repeated.",
+    "GPU-maximized placement differs from the earlier placement-controlled pilot."
+  ],
+  "tokenizer_metadata_sha256": "58ddb1a0e01133f741e9c01ec98d508f3662de2a991f625111d5bd954cf12ad9",
+  "chat_template_sha256": "e84f32a23fdda27689f868aa4a1a5621f41133e51a48d7f3efcbea2839574259"
+}

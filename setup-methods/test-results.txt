@@ -1,0 +1,34 @@
+test_bool_not_int (test_benchmark.DockerTests.test_bool_not_int) ... ok
+test_first_failure_and_all_tests (test_benchmark.DockerTests.test_first_failure_and_all_tests) ... ok
+test_input_mutation (test_benchmark.DockerTests.test_input_mutation) ... ok
+test_pass (test_benchmark.DockerTests.test_pass) ... ok
+test_timeout (test_benchmark.DockerTests.test_timeout) ... ok
+test_code_fence_and_literal (test_benchmark.GradingTests.test_code_fence_and_literal) ... ok
+test_exact_types (test_benchmark.GradingTests.test_exact_types) ... ok
+test_infra_not_wrong (test_benchmark.GradingTests.test_infra_not_wrong) ... ok
+test_math (test_benchmark.GradingTests.test_math) ... ok
+test_policy_never_executes (test_benchmark.GradingTests.test_policy_never_executes) ... ok
+test_solution_and_format_separate (test_benchmark.GradingTests.test_solution_and_format_separate) ... ok
+test_atomic_data_and_document_agreement (test_benchmark.PersistenceTests.test_atomic_data_and_document_agreement) ... ok
+test_backup_export_is_allowlisted_and_consistent (test_benchmark.PersistenceTests.test_backup_export_is_allowlisted_and_consistent) ... ok
+test_counter_wrap (test_benchmark.PersistenceTests.test_counter_wrap) ... ok
+test_event_explicit_time (test_benchmark.PersistenceTests.test_event_explicit_time) ... ok
+test_github_preflight_failure (test_benchmark.PersistenceTests.test_github_preflight_failure) ... ok
+test_grading_refuses_live_model (test_benchmark.PersistenceTests.test_grading_refuses_live_model) ... ok
+test_pending_and_infra_excluded (test_benchmark.PersistenceTests.test_pending_and_infra_excluded) ... ok
+test_resume_does_not_repeat_completed_grades (test_benchmark.PersistenceTests.test_resume_does_not_repeat_completed_grades) ... ok
+test_resume_preserves_interruption (test_benchmark.PersistenceTests.test_resume_preserves_interruption) ... ok
+test_single_profile_commands (test_benchmark.PersistenceTests.test_single_profile_commands) ... ok
+test_allowlist_chunk_restore_and_checksum (test_github_backup.ExportTests.test_allowlist_chunk_restore_and_checksum) ... ok
+test_empty_log (test_github_backup.ExportTests.test_empty_log) ... ok
+test_no_interactive_git (test_github_backup.ExportTests.test_no_interactive_git) ... ok
+test_private_destination_required (test_github_backup.ExportTests.test_private_destination_required) ... ok
+test_interrupted_push_reuses_local_commit (test_github_backup.GitTests.test_interrupted_push_reuses_local_commit) ... ok
+test_new_checkout_resumes_existing_remote (test_github_backup.GitTests.test_new_checkout_resumes_existing_remote) ... ok
+test_oversize_file_refused_before_commit (test_github_backup.GitTests.test_oversize_file_refused_before_commit) ... ok
+test_verified_push_and_idempotent_retry (test_github_backup.GitTests.test_verified_push_and_idempotent_retry) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 2.177s
+
+OK
