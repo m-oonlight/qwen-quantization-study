@@ -50,19 +50,18 @@
       "score_out_of": 2,
       "score": 1,
       "accuracy_among_graded": 0.5,
-      "inference_seconds": 16.16748533900136
+      "inference_seconds": 16.432475295001495
     }
   },
   "smoke_current_source_fingerprint_verified": true,
   "completed_smoke_resume": "Exit 0; no inference or grading repeated; DISPLAY/WAYLAND_DISPLAY/BROWSER unset; verified unattended push",
   "source_hashes": {
-    "benchmark.py": "63ee97537b8226603317d2822065249181fb30444854bf5f17e8a8a953aa9365",
+    "benchmark.py": "7003f433a87cad12c0b8b1e63174ed4f060d34517c4c27f04b14fb5e1d2b0c55",
     "grading.py": "46d441f474bd42f02262c63e46e81df2a15c489cb43dbaa44162ff4c88b31fd1",
     "monitoring.py": "6b95a84126bfd573873cc8f2fce55efe2970897eb75f6eced33c6df89ed0acde",
     "github_backup.py": "bc32e5cc5e1e6418fe91bb877de6e03e9d7beddca8c1944daa950504be42bcfe"
   },
-  "privacy": "Only allowlisted public run outputs and methods are published. Actual answer keys, hidden tests, model weights and account credentials remain local.",
   "checksum_manifest_note": "files.sha256.json excludes itself and the intentionally changing connection-check.json",
   "console": "quiet by default; single TTY line; redirected output throttled; config dump requires --verbose",
-  "smoke_status": "quiet-output smoke verification underway"
+  "privacy": "Only allowlisted public run outputs and methods are published. Actual answer keys, hidden tests, model weights and account credentials remain local."
 }
