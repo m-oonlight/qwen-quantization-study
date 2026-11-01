@@ -1,0 +1,27 @@
+{
+  "format": "Concatenate parts in listed order to restore each exact original log; chunks may split JSON lines.",
+  "logs": {
+    "runtime.log": {
+      "bytes": 20795,
+      "sha256": "a240b5ed2980de12375e7ca1e8f2c74f6328f3b82cd54991c1a4f3f1acd87242",
+      "parts": [
+        {
+          "path": "logs/runtime.log.part-000000",
+          "bytes": 20795,
+          "sha256": "a240b5ed2980de12375e7ca1e8f2c74f6328f3b82cd54991c1a4f3f1acd87242"
+        }
+      ]
+    },
+    "stress.jsonl": {
+      "bytes": 19647,
+      "sha256": "b61d2b951baae89ae3aee53f670e85257f075c41d560cb634da75c3b5fb87526",
+      "parts": [
+        {
+          "path": "logs/stress.jsonl.part-000000",
+          "bytes": 19647,
+          "sha256": "b61d2b951baae89ae3aee53f670e85257f075c41d560cb634da75c3b5fb87526"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "time": "2026-11-01T01:26:42.187453+00:00",
+  "provider": "github",
+  "repository": "m-oonlight/qwen-quantization-study",
+  "destination": "smoke-Q2_K",
+  "success": true,
+  "verification": "Presence on the remote branch confirms snapshot publication. The containing Git commit identifies this snapshot; the local upload.json additionally records its verified SHA."
+}

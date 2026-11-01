@@ -1,0 +1,20 @@
+{
+  "per_prompt": {
+    "HV3-MODULAR_ROOTS-01": null,
+    "HV3-ARRAY_RANGES-01": null
+  },
+  "inference_totals": {
+    "raw": {
+      "gpu_kwh": null,
+      "cpu_kwh": null,
+      "combined_kwh": null
+    },
+    "above_idle_signed": {
+      "gpu_kwh": null,
+      "cpu_kwh": null,
+      "combined_kwh": null
+    }
+  },
+  "execution_segments": [],
+  "scope": "CPU package plus GPU device only; above-idle is a signed baseline subtraction, not wall electricity."
+}
