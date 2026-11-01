@@ -7,7 +7,7 @@
   "full_benchmark_started": false,
   "document_headings_match_canonical_grades": true,
   "no_model_server_remaining": true,
-  "cpu_docker_and_offline_git_tests": 29,
+  "cpu_docker_and_offline_git_tests": 32,
   "github_repository": "m-oonlight/qwen-quantization-study",
   "github_private": true,
   "github_status": "Verified private-repository writes and remote commit SHA; pilot and smoke uploads successful",
@@ -62,5 +62,7 @@
     "github_backup.py": "bc32e5cc5e1e6418fe91bb877de6e03e9d7beddca8c1944daa950504be42bcfe"
   },
   "privacy": "Only allowlisted public run outputs and methods are published. Actual answer keys, hidden tests, model weights and account credentials remain local.",
-  "checksum_manifest_note": "files.sha256.json excludes itself and the intentionally changing connection-check.json"
+  "checksum_manifest_note": "files.sha256.json excludes itself and the intentionally changing connection-check.json",
+  "console": "quiet by default; single TTY line; redirected output throttled; config dump requires --verbose",
+  "smoke_status": "quiet-output smoke verification underway"
 }

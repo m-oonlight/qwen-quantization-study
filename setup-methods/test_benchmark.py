@@ -1,5 +1,5 @@
 """CPU-only tests. Docker cases use CPU containers, never the GPU."""
-import copy,json,os,pathlib,tempfile,unittest
+import copy,json,os,pathlib,tempfile,unittest,io,types
 from unittest.mock import patch
 import benchmark as b
 from grading import same,math_grade,extract_code,policy,code_grade
@@ -74,6 +74,28 @@ class PersistenceTests(unittest.TestCase):
    with patch('benchmark.GitHubBackup.publish',side_effect=upload):b.Backup(C,p,'test').upload(force=True,wait=True)
    self.assertIn('results.json',seen);self.assertTrue(b.load(p/'upload.json')['success'])
  def test_counter_wrap(self):self.assertEqual(energy_delta(98,3,100),5)
+class ConsoleTests(unittest.TestCase):
+ def test_tty_single_line_fits_80_columns(self):
+  with tempfile.TemporaryDirectory()as t:
+   stream=io.StringIO();stream.isatty=lambda:True;p=b.Progress(pathlib.Path(t),book([row('yes',correct=True),row('no',correct=False)]));p.phase='Infer'
+   with patch('sys.stdout',stream),patch('benchmark.shutil.get_terminal_size',return_value=os.terminal_size((80,24))):p.draw();p.draw()
+   self.assertNotIn('\n',stream.getvalue());self.assertEqual(stream.getvalue().count('\r\033[2K'),2);self.assertIn('\033[32mPASS1',stream.getvalue());self.assertIn('\033[31mFAIL1',stream.getvalue());self.assertLessEqual(len(p.last_plain),80)
+ def test_redirected_progress_is_not_spam(self):
+  with tempfile.TemporaryDirectory()as t:
+   stream=io.StringIO();p=b.Progress(pathlib.Path(t),book([row()]))
+   with patch('sys.stdout',stream):
+    for _ in range(50):p.draw()
+    p.phase='Grade';p.draw()
+   self.assertEqual(len(stream.getvalue().splitlines()),2);self.assertNotIn('\r',stream.getvalue());self.assertIn('C-PEND1',stream.getvalue())
+ def test_quiet_completed_command_saves_but_does_not_dump_config(self):
+  with tempfile.TemporaryDirectory()as t:
+   root=pathlib.Path(t);c=copy.deepcopy(C);c['run_root']=str(root/'runs');c['generation']['reasoning_budget_tokens']=c['smoke']['thinking_tokens'];c['generation']['max_tokens']=c['smoke']['output_tokens'];c['monitor']['idle_seconds']=c['smoke']['idle_seconds'];config=root/'config.json';b.save(config,c);folder=root/'runs/smoke-Q2_K';folder.mkdir(parents=True)
+   data=book([row('yes',correct=True)]);sources={p.name:b.sha(p)for p in [b.HERE/'benchmark.py',b.HERE/'grading.py',b.HERE/'monitoring.py',b.HERE/'github_backup.py']};data['profile_fingerprint']=b.digest({'config':c,'sources':sources});b.save(folder/'results.json',data);b.save(folder/'configuration.json',{'system':{'verbose_marker':'MUST_NOT_DUMP_THIS'}})
+   def upload(*a,**k):b.save(folder/'upload.json',{'success':True})
+   args=types.SimpleNamespace(config=config,model='Q2',smoke=True,grade_only=False,regrade=False,verbose=False,fresh_smoke=False);stream=io.StringIO()
+   with patch('sys.stdout',stream),patch('benchmark.recover'),patch('benchmark.finalize_energy'),patch.object(b.Backup,'upload',side_effect=upload):self.assertEqual(b.run(args),0)
+   self.assertNotIn('MUST_NOT_DUMP_THIS',stream.getvalue());self.assertIn('Config saved:',stream.getvalue());self.assertIn('No inference or grading repeated.',stream.getvalue())
+
 @unittest.skipUnless(os.environ.get('RUN_DOCKER_TESTS')=='1','set RUN_DOCKER_TESTS=1 for real CPU sandbox tests')
 class DockerTests(unittest.TestCase):
  def grade(self,code,cases,seconds=None):

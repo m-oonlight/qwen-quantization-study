@@ -1,3 +1,9 @@
+test_quiet_completed_command_saves_but_does_not_dump_config (test_benchmark.ConsoleTests.test_quiet_completed_command_saves_but_does_not_dump_config) ... /home/cs4/Documents/Codex/2026-10-31/un/outputs/benchmark/test_benchmark.py:96: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/cs4/Documents/Codex/2026-10-31/un/outputs/benchmark/.runner.lock' mode='w' encoding='UTF-8'>
+  with patch('sys.stdout',stream),patch('benchmark.recover'),patch('benchmark.finalize_energy'),patch.object(b.Backup,'upload',side_effect=upload):self.assertEqual(b.run(args),0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_redirected_progress_is_not_spam (test_benchmark.ConsoleTests.test_redirected_progress_is_not_spam) ... ok
+test_tty_single_line_fits_80_columns (test_benchmark.ConsoleTests.test_tty_single_line_fits_80_columns) ... ok
 test_bool_not_int (test_benchmark.DockerTests.test_bool_not_int) ... ok
 test_first_failure_and_all_tests (test_benchmark.DockerTests.test_first_failure_and_all_tests) ... ok
 test_input_mutation (test_benchmark.DockerTests.test_input_mutation) ... ok
@@ -29,6 +35,6 @@ test_oversize_file_refused_before_commit (test_github_backup.GitTests.test_overs
 test_verified_push_and_idempotent_retry (test_github_backup.GitTests.test_verified_push_and_idempotent_retry) ... ok
 
 ----------------------------------------------------------------------
-Ran 29 tests in 2.177s
+Ran 32 tests in 2.193s
 
 OK

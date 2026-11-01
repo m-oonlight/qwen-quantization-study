@@ -60,20 +60,32 @@ def persist(folder,book):
  energy={'per_prompt':{r['id']:r.get('energy')for r in book['questions']},'inference_totals':{section:{key:sumkey(section,key)for key in ['gpu_kwh','cpu_kwh','combined_kwh']}for section in ['raw','above_idle_signed']},'execution_segments':book.get('energy_segments',[]),'scope':'CPU package plus GPU device only; above-idle is a signed baseline subtraction, not wall electricity.'};save(folder/'energy.json',energy);return s
 
 class Progress:
- def __init__(self,folder,book):self.folder=folder;self.book=book;self.tps=0;self.current_start=None;self.generated=0;self.stop=threading.Event();self.thread=None
+ def __init__(self,folder,book):self.folder=folder;self.book=book;self.tps=0;self.current_start=None;self.generated=0;self.stop=threading.Event();self.thread=None;self.phase='Idle';self.last_plain=None;self.last_non_tty=None
  def draw(self,final=False):
-  s=summary(self.book);n=s['inference_completed'];
+  s=summary(self.book);n=s['inference_completed']
   if self.current_start:
    try:
     with (self.folder/'runtime.log').open('rb')as f:f.seek(max(0,f.seek(0,2)-8192));tail=f.read().decode(errors='replace')
     found=list(re.finditer(r'n_gen =\s*(\d+), tg =\s*([\d.]+) t/s',tail))
     if found:self.tps=float(found[-1][2])
    except OSError:pass
-  graded=s['correct']+s['incorrect'];seconds=s['inference_seconds'];mean=seconds/n if n else None;elapsed=time.monotonic()-self.current_start if self.current_start else 0;eta=max(0,(self.book['planned']-n)*(mean or 500)-elapsed);bar='━'*int(24*n/self.book['planned'])+'─'*(24-int(24*n/self.book['planned']));color=sys.stdout.isatty();green='\033[32m'if color else'';red='\033[31m'if color else'';reset='\033[0m'if color else''
-  upload=load(self.folder/'upload.json',{});backup_warning=' BACKUP FAILED'if upload.get('success')is False else''
-  line=f"{bar} {n}/{self.book['planned']}  {self.tps:.1f} tok/s  ETA {int(eta//3600):02d}:{int(eta%3600//60):02d}  {green}PASS {s['correct']}{reset} {red}FAIL {s['incorrect']}{reset} PENDING {s['pending']} (coding {s['coding_pending']}) INFRA {s['infrastructure_errors']}{backup_warning}"
-  print('\r'+line+' '*8,end='\n'if final else'',flush=True)
+  mean=s['inference_seconds']/n if n else 500;elapsed=time.monotonic()-self.current_start if self.current_start else 0;eta=max(0,(self.book['planned']-n)*mean-elapsed)
+  eta_text=f"{int(eta//3600):02d}:{int(eta%3600//60):02d}"if self.phase=='Infer'else'--:--'
+  upload=load(self.folder/'upload.json',{});warning=' BACKUP FAILED'if upload.get('success')is False else''
+  if s['infrastructure_errors']:warning+=f" INFRA {s['infrastructure_errors']}"
+  fields=f"{n}/{self.book['planned']} {self.tps:.1f}t/s ETA{eta_text} PASS{s['correct']} FAIL{s['incorrect']} C-PEND{s['coding_pending']}{warning}"
+  width=shutil.get_terminal_size((100,24)).columns;bar_width=max(3,min(18,width-len(fields)-len(self.phase)-4));filled=int(bar_width*n/max(1,self.book['planned']));bar='━'*filled+'─'*(bar_width-filled)
+  plain=f"{self.phase} {bar} {fields}";tty=sys.stdout.isatty();line=plain
+  if tty:
+   line=line.replace(f"PASS{s['correct']}",f"\033[32mPASS{s['correct']}\033[0m").replace(f"FAIL{s['incorrect']}",f"\033[31mFAIL{s['incorrect']}\033[0m")
+   print('\r\033[2K'+line,end='\n'if final else'',flush=True)
+  else:
+   key=(self.phase,n,s['correct'],s['incorrect'],s['coding_pending'],warning)
+   if final or key!=self.last_non_tty:print(plain,flush=True);self.last_non_tty=key
+  self.last_plain=plain
  def start(self):
+  if self.thread and self.thread.is_alive():return
+  self.draw()
   def loop():
    while not self.stop.wait(1):self.draw()
   self.thread=threading.Thread(target=loop,daemon=True);self.thread.start()
@@ -239,9 +251,9 @@ def system_info():
   except OSError:out[name]=None
  return out
 
-def grade_pending(folder,book,c,force=False):
+def grade_pending(folder,book,c,force=False,progress=None):
  if process_servers():raise RuntimeError('Refusing coding grading while any llama-server process is running. Stop it, then rerun with --grade-only.')
- tests=load(c['dataset']['hidden_tests']['path'])['tests'];progress=Progress(folder,book);progress.start()
+ tests=load(c['dataset']['hidden_tests']['path'])['tests'];own_progress=progress is None;progress=progress or Progress(folder,book);progress.phase='Grade';progress.start()
  try:
   for i,row in enumerate(book['questions']):
    if row['category']!='algorithmic_python'or not row.get('inference_complete'):continue
@@ -249,7 +261,8 @@ def grade_pending(folder,book,c,force=False):
    if force and row.get('grade'):row.setdefault('previous_grades',[]).append(row['grade'])
    row['grade']=code_grade(row['response'],tests[row['id']],c['sandbox'],row.get('output_truncated',False),book['run_id']);row['graded_at']=now();persist(folder,book)
    if row['grade']['correct']is None:event(folder,'coding_infrastructure_error',id=row['id'],grade=row['grade']);raise RuntimeError('Coding infrastructure failure preserved; rerun --grade-only to continue.')
- finally:progress.close()
+ finally:
+  if own_progress:progress.close()
 
 def finalize_energy(folder,book):
  energy=load(folder/'energy.json',{});raw={'gpu_j':0.,'cpu_j':0.};net={'gpu_j':0.,'cpu_j':0.};seconds=0.;net_seconds=0.;questions={};phases={};baselines={x.get('segment_id'):x for x in load(folder/'configuration.json',{}).get('idle_baselines',[])}
@@ -290,10 +303,13 @@ def run(args):
  if not args.smoke and not args.grade_only:
   for earlier in c['order'][:c['order'].index(quant)]:
    if not load(pathlib.Path(c['run_root'])/earlier/'summary.json',{}).get('complete')or not load(pathlib.Path(c['run_root'])/earlier/'upload.json',{}).get('success'):raise RuntimeError('Finish '+earlier+' first; full-study order is Q8, Q6, Q5, Q4, Q3, Q2.')
- purpose='smoke (excluded from full study)'if args.smoke else'full single-pass study';folder=pathlib.Path(c['run_root'])/(('smoke-'if args.smoke else'')+quant);folder.mkdir(parents=True,exist_ok=True)
+ purpose='smoke (excluded from full study)'if args.smoke else'full single-pass study';folder=pathlib.Path(c['run_root'])/(('smoke-'if args.smoke else'')+quant);
  lock=(HERE/'.runner.lock').open('w')
  try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
  except BlockingIOError:raise RuntimeError('Another benchmark command is active.')
+ if getattr(args,'fresh_smoke',False)and folder.exists():
+  archive=HERE/'archive'/('smoke-'+quant+'-'+datetime.datetime.now().strftime('%Y%m%d-%H%M%S')+'-'+uuid.uuid4().hex[:8]);archive.parent.mkdir(exist_ok=True);folder.rename(archive)
+ folder.mkdir(parents=True,exist_ok=True)
  for name,d in c['dataset'].items():
   if sha(d['path'])!=d['sha256']:raise RuntimeError('Immutable dataset hash changed: '+name)
  source_hashes={p.name:sha(p)for p in [pathlib.Path(__file__),HERE/'grading.py',HERE/'monitoring.py',HERE/'github_backup.py']};fingerprint=digest({'config':c,'sources':source_hashes});book=load(folder/'results.json')
@@ -316,12 +332,14 @@ def run(args):
   if sha(c['runtime']['binary'])!=c['runtime']['sha256']:raise RuntimeError('Pinned engine binary hash changed')
   if sha(c['models'][quant]['path'])!=c['models'][quant]['sha256']:raise RuntimeError('Model file hash mismatch')
   metadata={'shared_config':c,'profile_fingerprint':fingerprint,'source_hashes':source_hashes,'quant':quant,'model':c['models'][quant],'system':system_info(),'question_order':[r['id']for r in book['questions']],'purpose':purpose,'started':now(),'primary_score':'solution_correct; strict formatting separate','placement':None};save(folder/'configuration.json',metadata)
- print(json.dumps(metadata,indent=2),flush=True)
+ if getattr(args,'verbose',False):print(json.dumps(metadata,indent=2),flush=True)
+ else:print(f"{quant} | {len(book['questions'])} questions | Config saved: {folder/'configuration.json'}",flush=True)
  if not args.smoke and not args.grade_only and any(not r['inference_complete']for r in book['questions']):backup_preflight(c)
  if summary(book)['complete']and not args.regrade:
   comparison(c)
   persist(folder,book);finalize_energy(folder,book);backup.upload(force=True,wait=True);print(f"Already complete: {summary(book)['correct']}/{book['planned']}. No inference or grading repeated.");comparison(c);return 0 if load(folder/'upload.json',{}).get('success')else 3
  monitor=Monitor(folder,c);monitor.start();backup.start_periodic();server=Server(c,quant,folder,monitor);progress=Progress(folder,book)
+ progress.start()
  try:
   baseline=monitor.baseline_measure(c['monitor']['idle_seconds']);metadata.setdefault('idle_baselines',[]).append({'segment_id':monitor.segment_id,'time':now(),**baseline});save(folder/'configuration.json',metadata)
   if not args.grade_only and any(not r['inference_complete']for r in book['questions']):
@@ -329,23 +347,24 @@ def run(args):
    placement=metadata.get('placement')
    if placement is None:
     if args.smoke:layers=c['smoke']['cpu_moe_layers'];trials=[]
-    else:layers,trials=server.qualify()
+    else:progress.phase='Fit';layers,trials=server.qualify()
     placement={'cpu_expert_layers':layers,'remaining_gpu_expert_layers':c['placement']['max_cpu_moe']-layers,'gpu_layers':'all with first N MoE experts overridden to CPU','qualification_trials':trials,'qualification':'short allocation/prefill probe, not a filled 128K context'};metadata['placement']=placement;save(folder/'configuration.json',metadata)
-   props=server.start(placement['cpu_expert_layers']);
+   progress.phase='Load';props=server.start(placement['cpu_expert_layers']);
    if hashlib.sha256(props.get('chat_template','').encode()).hexdigest()!=c['chat_template_sha256']:raise RuntimeError('Chat template differs from shared reference')
    metadata['resolved_server_defaults']=props;metadata['exact_server_command']=server.command(placement['cpu_expert_layers']);save(folder/'configuration.json',metadata)
-   print('\nResolved run configuration:\n'+json.dumps(metadata,indent=2),flush=True)
-   keys=load(c['dataset']['answer_key']['path'])['answers'];book['_math_keys']=keys;progress.start();persist(folder,{k:v for k,v in book.items()if not k.startswith('_')});backup.upload(force=True)
+   if getattr(args,'verbose',False):print('\nResolved run configuration:\n'+json.dumps(metadata,indent=2),flush=True)
+   keys=load(c['dataset']['answer_key']['path'])['answers'];book['_math_keys']=keys;progress.phase='Infer';progress.draw();persist(folder,{k:v for k,v in book.items()if not k.startswith('_')});backup.upload(force=True)
    for row in book['questions']:
     if row['inference_complete']:continue
     infer(row,c,server,monitor,progress,folder,book);persist(folder,{k:v for k,v in book.items()if not k.startswith('_')});backup.upload()
-   book.pop('_math_keys',None);progress.close();server.close();save(folder/'recovery.json',{'inference_complete':True,'time':now()})
-  server.close();monitor.set_phase('coding_grading');grade_pending(folder,book,c,args.regrade);s=persist(folder,book)
+   book.pop('_math_keys',None);progress.phase='Unload';server.close();save(folder/'recovery.json',{'inference_complete':True,'time':now()})
+  server.close();monitor.set_phase('coding_grading');grade_pending(folder,book,c,args.regrade,progress); s=persist(folder,book)
  except BaseException as e:
   book.pop('_math_keys',None);event(folder,'run_interrupted',error=repr(e));raise
  finally:
-  if progress.thread:progress.close()
+  progress.phase='Upload'
   server.close();segment=monitor.stop();book.pop('_math_keys',None);book.setdefault('energy_segments',[]).append({'time':now(),**segment});persist(folder,book);finalize_energy(folder,book);comparison(c);backup.stop_periodic();backup.join();backup.upload(force=True,wait=True)
+  if progress.thread:progress.close()
  s=persist(folder,book);finalize_energy(folder,book)
  # Documents are derived from the canonical results; verify all status headings.
  for i,r in enumerate(book['questions']):
@@ -359,7 +378,8 @@ def run(args):
  return 0 if upload.get('success')else 3
 
 def cli():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('model');p.add_argument('--config',type=pathlib.Path,default=HERE/'config.json');p.add_argument('--smoke',action='store_true',help='two questions, 64 thinking / 1024 total tokens; separate output folder; excluded from study');p.add_argument('--grade-only',action='store_true',help='resume pending coding grades without loading any model');p.add_argument('--regrade',action='store_true',help='with --grade-only, regrade coding source and preserve previous grades');args=p.parse_args()
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('model');p.add_argument('--config',type=pathlib.Path,default=HERE/'config.json');p.add_argument('--smoke',action='store_true',help='two questions, 64 thinking / 1024 total tokens; separate output folder; excluded from study');p.add_argument('--grade-only',action='store_true',help='resume pending coding grades without loading any model');p.add_argument('--regrade',action='store_true',help='with --grade-only, regrade coding source and preserve previous grades');p.add_argument('--verbose',action='store_true',help='print full configurations to terminal as well as saving them');p.add_argument('--fresh-smoke',action='store_true',help='archive earlier Q2/model smoke results and start a fresh two-question test');args=p.parse_args()
+ if args.fresh_smoke:args.smoke=True
  if args.regrade and not args.grade_only:p.error('--regrade requires --grade-only')
  try:return run(args)or 0
  except(KeyboardInterrupt,Exception)as e:print('\nStopped:',e,file=sys.stderr);return 1

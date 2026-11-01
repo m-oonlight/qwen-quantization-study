@@ -23,7 +23,7 @@ Quick infrastructure test, excluded from the study:
 ./benchmark.py Q2 --smoke
 ```
 
-This uses two unchanged exam questions (one math, one coding), seed 73191, 64 thinking tokens and 1,024 total output tokens, a three-second idle baseline, and a conservative 30-CPU-expert split. It does not qualify maximum GPU placement. Its score is NOT an accuracy benchmark. A completed smoke command is idempotent; rerunning does not generate again.
+This uses two unchanged exam questions (one math, one coding), seed 73191, 64 thinking tokens and 1,024 total output tokens, a three-second idle baseline, and a conservative 30-CPU-expert split. It does not qualify maximum GPU placement. Its score is NOT an accuracy benchmark. A completed smoke command is idempotent; rerunning does not generate again. To deliberately repeat it with automatic archival of the earlier smoke, run `./benchmark.py Q2 --fresh-smoke`. Omit `--fresh-smoke` when resuming an interrupted test.
 
 Resume after a crash/power loss with the SAME model command. Completed inference is never repeated. An unfinished generation must restart because the GPU/KV state did not survive; its checkpoint is preserved in interrupted_attempts and the restart is logged. Checkpoints are written every five seconds, completed results and each grade are fsynced atomically. A lost final few seconds of an unfinished response is possible. Old server PID/start-time checks prevent killing unrelated processes. Interrupted Docker jobs are cleaned up only when labeled for this exact run.
 
@@ -42,7 +42,7 @@ The first continues pending/infrastructure-error grades and preserves completed 
 
 Only model identity and CPU/GPU expert placement vary. Initial binary-search qualification finds the minimum CPU-expert-layer count that passes the shared allocation/prefill probe with at least 1,536 MiB free VRAM and zero model-process swap. Other layers and embeddings stay on GPU; automatic fitting is disabled. Every placement trial, exact command, loaded server defaults, source/model/runtime hashes and hardware details are recorded. This qualifies the probe, not a filled 128K context. The same guard runs during actual inference and stops the run on violation. The model process runs in its own session/process group so shutdown cannot signal the runner's process group.
 
-The full effective configuration is printed/saved at each invocation and again after placement/loaded-default resolution. Tokenizer metadata was compared across all six supplied GGUFs and matched; each loaded chat template must match the shared reference. Engine/model/library hashes are checked on every load/resume.
+The full effective configuration is saved in configuration.json at each invocation and again after placement/loaded-default resolution. Default terminal output is a short config-path notice, one updating progress line (Idle/Load/Fit/Infer/Grade/Upload), and the final score. Use `--verbose` to also print the full configuration. Redirected output records only phase/count changes rather than one new line per second. `C-PEND` is the number of coding grades pending. Tokenizer metadata was compared across all six supplied GGUFs and matched; each loaded chat template must match the shared reference. Engine/model/library hashes are checked on every load/resume.
 
 ## Mechanical grading
 
