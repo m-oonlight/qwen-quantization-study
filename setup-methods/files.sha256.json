@@ -3,7 +3,6 @@
   "README.md": "65d0f927094a1af689a7259e3d55476d709e16dd485b3e2e4b839c22a37d04d2",
   "benchmark.py": "63ee97537b8226603317d2822065249181fb30444854bf5f17e8a8a953aa9365",
   "config.json": "21237c30d55c75009f25c847361d241594fa1eed5e6102e8f4bad85030020610",
-  "connection-check.json": "efa76104e58300d15f082a435e7c99c78809d56d3a5697ea4ad01c15cc8f8e10",
   "enable-cpu-energy.sh": "6fc6b1c1724497ac313899fa7beaf431ee3430d8433256af65a333292078b33b",
   "github_backup.py": "bc32e5cc5e1e6418fe91bb877de6e03e9d7beddca8c1944daa950504be42bcfe",
   "grading.py": "46d441f474bd42f02262c63e46e81df2a15c489cb43dbaa44162ff4c88b31fd1",
@@ -14,5 +13,5 @@
   "test-results.txt": "cc30ca01da2b61ded0df8d1ffff1b7c410bd25c148e319c8ccbdc90dbcf9e76e",
   "test_benchmark.py": "7c918bca9019ff5e1a4303b17726ecaae0c094aa6720a20bdc967945fd4f1f99",
   "test_github_backup.py": "bfeb60ceee358ade36baadcb522c693b57dd16195505050e4f48b3d85c910cf4",
-  "validation.json": "ba0b195cbe9340ab27ef57a7a60c11a253d9dc68316748f0fb74e5cdd9bc80d2"
+  "validation.json": "8927c1e6bd5f52ca7d7c59261b3fa6294ef5f673421d7f2d0a52f6fb49d04618"
 }
